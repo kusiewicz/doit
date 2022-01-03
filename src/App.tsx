@@ -1,3 +1,11 @@
-import { Todolist } from './pages/main/todolist';
+import { Todolist } from './pages/todolist/todolist';
+import { ThemeProvider } from './context/theme-provider';
+import { Wrapper } from './parts/wrapper/wrapper';
 
-export const App = () => <Todolist />;
+export const App = () => (
+  <ThemeProvider>
+    <Wrapper>
+      <Todolist />
+    </Wrapper>
+  </ThemeProvider>
+);

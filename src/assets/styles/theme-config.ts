@@ -2,13 +2,15 @@ import {
   MOBILE_DEVICE_BREAKPOINT,
   TABLET_DEVICE_BREAKPOINT,
   DESKTOP_DEVICE_BREAKPOINT,
-} from '../constants/devices';
+} from '../../constants/devices';
 
 type FontSize = 'xsmall' | 'small' | 'normal' | 'large' | 'xlarge';
 
+type FontWeight = 'light' | 'normal' | 'bold';
+
 type Colors = 'lowPriority' | 'mediumPriority' | 'highPriority';
 
-type BaseColors = 'white' | 'black' | 'grey';
+type BaseColors = 'white' | 'black' | 'grey' | 'red';
 
 type Device = 'mobile' | 'desktop' | 'tablet';
 
@@ -16,6 +18,7 @@ type Spacing = 'xxsmall' | 'xsmall' | 'small' | 'normal' | 'large' | 'xlarge' | 
 
 interface Theme {
   fontSize: { [key in FontSize]: string };
+  fontWeight: { [key in FontWeight]: string };
   baseColors: { [key in BaseColors]: string };
   colors: { [key in Colors]: string };
   device: { [key in Device]: string };
@@ -26,6 +29,7 @@ const baseColors: { [key in BaseColors]: string } = {
   black: '#000',
   white: '#FFF',
   grey: '#B0B4B8',
+  red: '#E44432',
 };
 
 const colors: { [key in Colors]: string } = {
@@ -57,6 +61,11 @@ export const theme: Theme = {
     normal: '15px',
     large: '17px',
     xlarge: '20px',
+  },
+  fontWeight: {
+    light: '100',
+    normal: '300',
+    bold: '400',
   },
   baseColors,
   colors,
