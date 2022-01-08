@@ -10,7 +10,15 @@ type FontWeight = 'light' | 'normal' | 'bold';
 
 type Colors = 'lowPriority' | 'mediumPriority' | 'highPriority';
 
-type BaseColors = 'white' | 'black' | 'grey' | 'red' | 'lightGreen' | 'blue' | 'purple';
+type BaseColors =
+  | 'white'
+  | 'black'
+  | 'lightGrey'
+  | 'grey'
+  | 'red'
+  | 'lightGreen'
+  | 'blue'
+  | 'purple';
 
 type Device = 'mobile' | 'desktop' | 'tablet';
 
@@ -28,8 +36,9 @@ interface Theme {
 const baseColors: { [key in BaseColors]: string } = {
   black: '#000',
   white: '#FFF',
-  grey: '#FAFAFA',
-  red: '#E44432',
+  lightGrey: '#FAFAFA',
+  grey: '#E9E9E9',
+  red: '#DB4C3F',
   lightGreen: '#058236',
   blue: '#246FE0',
   purple: '#692FC2',
@@ -60,10 +69,10 @@ const spacing: { [key in Spacing]: string } = {
 export const theme: Theme = {
   fontSize: {
     xsmall: '11px',
-    small: '13px',
-    normal: '15px',
-    large: '17px',
-    xlarge: '20px',
+    small: '14px',
+    normal: '16px',
+    large: '18px',
+    xlarge: '21px',
   },
   fontWeight: {
     light: '100',
