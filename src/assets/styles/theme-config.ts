@@ -10,7 +10,7 @@ type FontWeight = 'light' | 'normal' | 'bold';
 
 type Colors = 'lowPriority' | 'mediumPriority' | 'highPriority';
 
-type BaseColors = 'white' | 'black' | 'grey' | 'red';
+type BaseColors = 'white' | 'black' | 'grey' | 'red' | 'lightGreen' | 'blue' | 'purple';
 
 type Device = 'mobile' | 'desktop' | 'tablet';
 
@@ -28,8 +28,11 @@ interface Theme {
 const baseColors: { [key in BaseColors]: string } = {
   black: '#000',
   white: '#FFF',
-  grey: '#B0B4B8',
+  grey: '#FAFAFA',
   red: '#E44432',
+  lightGreen: '#058236',
+  blue: '#246FE0',
+  purple: '#692FC2',
 };
 
 const colors: { [key in Colors]: string } = {

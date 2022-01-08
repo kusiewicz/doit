@@ -8,6 +8,7 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
+      "project": "./tsconfig.json",
         "ecmaFeatures": {
             "jsx": true
         },
@@ -18,6 +19,17 @@
     "plugins": [
         "react-hooks", "import", "react"
     ],
+    "settings": {
+      "import/resolver": {
+        "alias": {
+          "map": [
+            ["@assets", "./src/assets"]
+          ],
+          "extensions": [".ts", ".js", ".jsx", ".json"]
+        }
+      }
+    },
+    "ignorePatterns": ".eslintrc.js",
     "overrides": [
         {
           "files": ["*.tsx", "*.ts"],

@@ -1,0 +1,6 @@
+import styled from 'styled-components';
+import { ReactComponent as Tommorow } from '@assets/icons/tommorow.svg';
+
+const TommorowIcon = styled(Tommorow)``;
+
+export default { TommorowIcon };
