@@ -4,7 +4,7 @@ import {
   DESKTOP_DEVICE_BREAKPOINT,
 } from '../../constants/devices';
 
-type FontSize = 'xsmall' | 'small' | 'normal' | 'large' | 'xlarge';
+type FontSize = 'xsmall' | 'xxsmall' | 'small' | 'normal' | 'large' | 'xlarge';
 
 type FontWeight = 'light' | 'normal' | 'bold';
 
@@ -15,6 +15,7 @@ type BaseColors =
   | 'black'
   | 'lightGrey'
   | 'grey'
+  | 'darkGrey'
   | 'red'
   | 'lightGreen'
   | 'blue'
@@ -38,6 +39,7 @@ const baseColors: { [key in BaseColors]: string } = {
   white: '#FFF',
   lightGrey: '#FAFAFA',
   grey: '#E9E9E9',
+  darkGrey: '#808080',
   red: '#DB4C3F',
   lightGreen: '#058236',
   blue: '#246FE0',
@@ -59,7 +61,7 @@ const device: { [key in Device]: string } = {
 const spacing: { [key in Spacing]: string } = {
   xxsmall: '3px',
   xsmall: '5px',
-  small: '8px',
+  small: '7px',
   normal: '10px',
   large: '15px',
   xlarge: '20px',
@@ -68,7 +70,8 @@ const spacing: { [key in Spacing]: string } = {
 
 export const theme: Theme = {
   fontSize: {
-    xsmall: '11px',
+    xxsmall: '11px',
+    xsmall: '13px',
     small: '14px',
     normal: '16px',
     large: '18px',
@@ -76,8 +79,8 @@ export const theme: Theme = {
   },
   fontWeight: {
     light: '100',
-    normal: '300',
-    bold: '400',
+    normal: '400',
+    bold: '600',
   },
   baseColors,
   colors,

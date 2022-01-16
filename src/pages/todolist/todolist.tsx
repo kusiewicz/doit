@@ -4,6 +4,7 @@ import S from './todolist.styles';
 
 import { Menu } from './parts/menu/menu';
 import { Nav } from './parts/nav/nav';
+import { Content } from './parts/content/content';
 
 export const Todolist = () => {
   const [when, setWhen] = useState('today');
@@ -14,6 +15,7 @@ export const Todolist = () => {
     <S.Wrapper>
       <Nav />
       <Menu setWhen={setWhen} when={when} />
+      <Content />
     </S.Wrapper>
   );
 };

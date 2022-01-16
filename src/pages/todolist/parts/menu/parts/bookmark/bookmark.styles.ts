@@ -20,8 +20,8 @@ export const Wrapper = styled.div<{ active: boolean }>`
 export const Text = styled.span`
   display: inline-block;
   font-weight: ${({ theme }) => theme.fontWeight.light};
-  margin-left: ${({ theme }) => theme.spacing.normal};
-  font-size: ${({ theme }) => theme.fontSize.small};
+  margin-left: ${({ theme }) => theme.spacing.small};
+  font-size: ${({ theme }) => theme.fontSize.xsmall};
   position: relative;
   top: 1px;
 `;
