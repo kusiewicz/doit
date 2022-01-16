@@ -4,20 +4,16 @@ import { IncomingIcon } from './parts/icons/incoming-icon/incoming-icon';
 import { TodayIcon } from './parts/icons/today-icon/today-icon';
 import { TommorowIcon } from './parts/icons/tommorow-icon/tommorow-icon';
 
-export const Menu = ({ setWhen, when }: { setWhen: Function; when: string }) => {
+export const Menu = ({ setDay, day }: { setDay: Function; day: string }) => {
   return (
     <S.Wrapper>
-      <Bookmark Icon={TodayIcon} onClick={() => setWhen('today')} active={when === 'today'}>
+      <Bookmark Icon={TodayIcon} onClick={() => setDay('today')} active={day === 'today'}>
         Dziś
       </Bookmark>
-      <Bookmark
-        Icon={TommorowIcon}
-        onClick={() => setWhen('tommorow')}
-        active={when === 'tommorow'}
-      >
+      <Bookmark Icon={TommorowIcon} onClick={() => setDay('tommorow')} active={day === 'tommorow'}>
         Jutro
       </Bookmark>
-      <Bookmark Icon={IncomingIcon} onClick={() => setWhen('7days')} active={when === '7days'}>
+      <Bookmark Icon={IncomingIcon} onClick={() => setDay('7days')} active={day === '7days'}>
         Nadchodzące 7 dni
       </Bookmark>
     </S.Wrapper>

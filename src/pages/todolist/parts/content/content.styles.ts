@@ -4,7 +4,7 @@ import { ReactComponent as PlusIcon } from '@assets/icons/plus.svg';
 const Wrapper = styled.div`
   padding: 36px 55px;
   flex: 1;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 `;
 
@@ -22,25 +22,13 @@ const Date = styled.span`
   margin-left: ${({ theme }) => theme.spacing.xsmall};
 `;
 
-const PlusWrap = styled.div`
-  border-radius: 50%;
-  width: 17px;
-  height: 17px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: ${({ theme }) => theme.spacing.small};
-  position: relative;
-  top: 1px;
-`;
-
 const Plus = styled(PlusIcon)`
   color: ${({ theme }) => theme.baseColors.red};
   margin: auto;
 `;
 
 const AddTask = styled.div`
-  font-size: ${({ theme }) => theme.fontSize.xsmall};
+  font-size: ${({ theme }) => theme.fontSize.small};
   color: ${({ theme }) => theme.baseColors.darkGrey};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   margin-top: ${({ theme }) => theme.spacing.large};
@@ -71,4 +59,4 @@ const AddTask = styled.div`
   }
 `;
 
-export default { Wrapper, Day, Date, AddTask, Plus, PlusWrap };
+export default { Wrapper, Day, Date, AddTask, Plus };

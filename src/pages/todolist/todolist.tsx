@@ -7,15 +7,15 @@ import { Nav } from './parts/nav/nav';
 import { Content } from './parts/content/content';
 
 export const Todolist = () => {
-  const [when, setWhen] = useState('today');
+  const [day, setDay] = useState('today');
 
-  console.log(when);
+  console.log(day);
 
   return (
     <S.Wrapper>
       <Nav />
-      <Menu setWhen={setWhen} when={when} />
-      <Content />
+      <Menu setDay={setDay} day={day} />
+      <Content day={day} />
     </S.Wrapper>
   );
 };
