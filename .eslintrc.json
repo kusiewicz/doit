@@ -23,9 +23,10 @@
       "import/resolver": {
         "alias": {
           "map": [
-            ["@assets", "./src/assets"]
+            ["@assets", "./src/assets"],
+            ["@utils", "./src/utils"]
           ],
-          "extensions": [".ts", ".js", ".jsx", ".json"]
+          "extensions": [".ts", ".js", ".jsx", ".json", ".tsx"]
         }
       }
     },

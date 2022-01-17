@@ -9,8 +9,6 @@ import { Content } from './parts/content/content';
 export const Todolist = () => {
   const [day, setDay] = useState('today');
 
-  console.log(day);
-
   return (
     <S.Wrapper>
       <Nav />
