@@ -8,7 +8,14 @@ type FontSize = 'xsmall' | 'xxsmall' | 'small' | 'normal' | 'large' | 'xlarge';
 
 type FontWeight = 'light' | 'normal' | 'bold';
 
-type Colors = 'lowPriority' | 'mediumPriority' | 'highPriority';
+type Colors =
+  | 'lowPriority'
+  | 'mediumPriority'
+  | 'highPriority'
+  | 'placeholder'
+  | 'dateBtnToday'
+  | 'dateBtnTomorrow'
+  | 'dateBtnRest';
 
 type BaseColors =
   | 'white'
@@ -38,7 +45,7 @@ const baseColors: { [key in BaseColors]: string } = {
   black: '#000',
   white: '#FFF',
   lightGrey: '#FAFAFA',
-  grey: '#E9E9E9',
+  grey: '#DDDDDD',
   darkGrey: '#808080',
   red: '#DB4C3F',
   lightGreen: '#058236',
@@ -50,6 +57,10 @@ const colors: { [key in Colors]: string } = {
   lowPriority: '#246FE0',
   mediumPriority: '#EB8909',
   highPriority: '#D1493B',
+  placeholder: '#A8A5A4',
+  dateBtnToday: '#058527',
+  dateBtnTomorrow: '#AD6200',
+  dateBtnRest: '#555555',
 };
 
 const device: { [key in Device]: string } = {
