@@ -1,7 +1,14 @@
 import styled, { css } from 'styled-components';
 import { ReactComponent as ButtonIcon } from '@assets/icons/calendar-button.svg';
+import { DatePicker as DatePickerBase } from 'antd';
 
-const Button = styled.div<{ color: string }>`
+const Button = styled.div<{ color: string }>``;
+
+const CalendarIcon = styled(ButtonIcon)`
+  margin-right: ${({ theme }) => theme.spacing.xxsmall};
+`;
+
+const DatePicker = styled(DatePickerBase)<{ color: string }>`
   padding: ${({ theme }) => theme.spacing.xsmall} ${({ theme }) => theme.spacing.small};
   font-size: ${({ theme }) => theme.fontSize.xsmall};
   border-radius: 5px;
@@ -19,8 +26,4 @@ const Button = styled.div<{ color: string }>`
     `};
 `;
 
-const CalendarIcon = styled(ButtonIcon)`
-  margin-right: ${({ theme }) => theme.spacing.xxsmall};
-`;
-
-export default { Button, CalendarIcon };
+export default { Button, CalendarIcon, DatePicker };
