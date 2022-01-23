@@ -1,7 +1,7 @@
 import S from './content.styles';
 import { EmptyState } from './parts/empty-state/empty-state';
 import { getDate } from '@utils/getDate';
-import { TaskTextBox } from './parts/task-textbox/task-textbox';
+import { TaskCreator } from './parts/task-creator/task-creator';
 
 export const Content = ({ day }: { day: string }) => {
   return (
@@ -14,7 +14,7 @@ export const Content = ({ day }: { day: string }) => {
         </div>
         Dodaj zadanie
       </S.AddTask>
-      <TaskTextBox />
+      <TaskCreator />
       <EmptyState day={day} />
     </S.Wrapper>
   );
