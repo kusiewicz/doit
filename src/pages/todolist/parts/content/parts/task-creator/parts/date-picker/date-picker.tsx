@@ -1,21 +1,20 @@
 import S from './date-picker.styles';
 import locale from 'antd/es/date-picker/locale/pl_PL';
 import 'dayjs/locale/pl';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
 
-import isToday from 'dayjs/plugin/isToday';
-dayjs.extend(isToday);
-
 import isTomorrow from 'dayjs/plugin/isTomorrow';
-dayjs.extend(isTomorrow);
+import isToday from 'dayjs/plugin/isToday';
 
+dayjs.extend(isToday);
+dayjs.extend(isTomorrow);
 dayjs.locale('pl');
 
 export const DatePicker = () => {
   const [date, setDate] = useState(dayjs());
 
-  const customFormat = () => {
+  const customFormat = (value: Dayjs) => {
     if (date.isToday()) {
       return 'Dziś';
     }
@@ -25,21 +24,22 @@ export const DatePicker = () => {
     }
 
     if (date.diff(dayjs(), 'day') <= 6) {
-      return date.format('dddd');
+      return value.format('dddd');
     }
 
-    return date.format('D MMM');
+    return value.format('D MMM');
   };
 
-  console.log(date);
-
   return (
-    <S.DatePicker
+    <S.DatePickerr
       locale={locale}
-      allowClear={false}
       value={date}
-      onChange={(newDate) => setDate(dayjs(newDate))}
+      onChange={(pickedDate) => setDate(dayjs(pickedDate))}
+      allowClear={false}
       format={customFormat}
+      className="datepicker"
+      color="buttonWeek"
+      suffixIcon={<S.CalendarIcon />}
     />
   );
 };

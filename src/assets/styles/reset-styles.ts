@@ -21,4 +21,9 @@ export const ResetStyles = createGlobalStyle`
     vertical-align: baseline;
     font-family: 'Montserrat', 'Raleway', sans-serif;
   }
+
+  
+
 `;
+
+

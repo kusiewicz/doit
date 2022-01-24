@@ -13,9 +13,10 @@ type Colors =
   | 'mediumPriority'
   | 'highPriority'
   | 'placeholder'
-  | 'dateBtnToday'
-  | 'dateBtnTomorrow'
-  | 'dateBtnRest';
+  | 'buttonToday'
+  | 'buttonTomorrow'
+  | 'buttonWeek' 
+  | 'buttonAnother';
 
 type BaseColors =
   | 'white'
@@ -58,9 +59,10 @@ const colors: { [key in Colors]: string } = {
   mediumPriority: '#EB8909',
   highPriority: '#D1493B',
   placeholder: '#A8A5A4',
-  dateBtnToday: '#058527',
-  dateBtnTomorrow: '#AD6200',
-  dateBtnRest: '#555555',
+  buttonToday: '#058527',
+  buttonTomorrow: '#AD6200',
+  buttonWeek: '#692FC2',
+  buttonAnother: '#555555',
 };
 
 const device: { [key in Device]: string } = {
