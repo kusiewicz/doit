@@ -15,8 +15,9 @@ type Colors =
   | 'placeholder'
   | 'buttonToday'
   | 'buttonTomorrow'
-  | 'buttonWeek' 
-  | 'buttonAnother';
+  | 'buttonWeek'
+  | 'buttonAnother'
+  | 'hoveredPicker';
 
 type BaseColors =
   | 'white'
@@ -63,6 +64,7 @@ const colors: { [key in Colors]: string } = {
   buttonTomorrow: '#AD6200',
   buttonWeek: '#692FC2',
   buttonAnother: '#808080',
+  hoveredPicker: '#EEEEEE',
 };
 
 const device: { [key in Device]: string } = {

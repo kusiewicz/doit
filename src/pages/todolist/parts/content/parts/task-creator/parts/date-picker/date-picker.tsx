@@ -45,6 +45,8 @@ export const DatePicker = () => {
       className="datepicker"
       color={color}
       suffixIcon={<S.CalendarIcon />}
+      showToday={false}
+      disabledDate={(d) => d.isBefore(dayjs().subtract(1, 'day'))}
     />
   );
 };
