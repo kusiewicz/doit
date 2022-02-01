@@ -16,23 +16,36 @@ const Label = styled.label<{ color: string }>`
 
 const CalendarIcon = styled(CalendarIconBase)`
   vertical-align: text-bottom;
-  margin-right: ${({ theme }) => theme.spacing.xxsmall};
+  margin-right: ${({ theme }) => theme.spacing.xsmall};
+  margin-left: ${({ theme }) => theme.spacing.xxsmall};
   pointer-events: none;
 `;
 
 const DatePickerr = styled(DatePickerBase)<{ color: string }>`
   border-radius: 5px;
-  padding: 0 ${({ theme }) => theme.spacing.xsmall};
-  padding: 0;
-  border: 1px solid ${({ theme }) => theme.baseColors.darkGrey};
+  padding: 1px 0;
+  border: 1px solid ${({ theme }) => theme.baseColors.grey};
   width: fit-content;
   position: relative;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.baseColors.grey};
+  }
 
   .ant-picker-input {
     flex-direction: row-reverse;
   }
 
+  &.ant-picker-focused {
+    box-shadow: none;
+  }
+
   input {
+    text-transform: capitalize;
+  }
+
+  input,
+  ${CalendarIcon} {
     ${({ color }) =>
       color &&
       css`

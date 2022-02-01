@@ -13,20 +13,25 @@ dayjs.locale('pl');
 
 export const DatePicker = () => {
   const [date, setDate] = useState(dayjs());
+  const [color, setColor] = useState('buttonToday');
 
-  const customFormat = (value: Dayjs) => {
+  const dateFormatter = (value: Dayjs) => {
     if (date.isToday()) {
+      setColor('buttonToday');
       return 'Dziś';
     }
 
     if (date.isTomorrow()) {
+      setColor('buttonTomorrow');
       return 'Jutro';
     }
 
     if (date.diff(dayjs(), 'day') <= 6) {
+      setColor('buttonWeek');
       return value.format('dddd');
     }
 
+    setColor('buttonAnother');
     return value.format('D MMM');
   };
 
@@ -36,9 +41,9 @@ export const DatePicker = () => {
       value={date}
       onChange={(pickedDate) => setDate(dayjs(pickedDate))}
       allowClear={false}
-      format={customFormat}
+      format={dateFormatter}
       className="datepicker"
-      color="buttonWeek"
+      color={color}
       suffixIcon={<S.CalendarIcon />}
     />
   );

@@ -46,7 +46,7 @@ const baseColors: { [key in BaseColors]: string } = {
   black: '#000',
   white: '#FFF',
   lightGrey: '#FAFAFA',
-  grey: '#DDDDDD',
+  grey: '#CCCCCC',
   darkGrey: '#808080',
   red: '#DB4C3F',
   lightGreen: '#058236',
@@ -62,7 +62,7 @@ const colors: { [key in Colors]: string } = {
   buttonToday: '#058527',
   buttonTomorrow: '#AD6200',
   buttonWeek: '#692FC2',
-  buttonAnother: '#555555',
+  buttonAnother: '#808080',
 };
 
 const device: { [key in Device]: string } = {

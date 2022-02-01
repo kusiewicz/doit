@@ -10,5 +10,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: any }>`
         font-family: Roboto;
         height: 100%;
     }
+
 }
 `;
