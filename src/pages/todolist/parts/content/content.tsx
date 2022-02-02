@@ -1,21 +1,30 @@
+import { useState } from 'react';
 import S from './content.styles';
-import { EmptyState } from './parts/empty-state/empty-state';
-import { getDate } from '@utils/getDate';
-import { TaskCreator } from './parts/task-creator/task-creator';
+import { Bookmark } from './parts/bookmark/bookmark';
+import { IncomingIcon } from './parts/icons/incoming-icon/incoming-icon';
+import { TodayIcon } from './parts/icons/today-icon/today-icon';
+import { TommorowIcon } from './parts/icons/tommorow-icon/tommorow-icon';
+import { TaskBoard } from './parts/task-board/task-board';
 
-export const Content = ({ day }: { day: string }) => {
+export const Content = () => {
+  const [mode, setMode] = useState('Today');
+
   return (
-    <S.Wrapper>
-      <S.Day>Dziś</S.Day>
-      <S.Date>{getDate()}</S.Date>
-      <S.AddTask>
-        <div>
-          <S.Plus />
-        </div>
-        Dodaj zadanie
-      </S.AddTask>
-      <TaskCreator />
-      <EmptyState day={day} />
-    </S.Wrapper>
+    <>
+      <S.MenuWrapper>
+        <Bookmark Icon={TodayIcon} onClick={() => setMode('Today')}>
+          Dziś
+        </Bookmark>
+
+        <Bookmark Icon={TommorowIcon} onClick={() => setMode('Tomorrow')}>
+          Jutro
+        </Bookmark>
+
+        <Bookmark Icon={IncomingIcon} onClick={() => setMode('Week')}>
+          Nadchodzące 7 dni
+        </Bookmark>
+      </S.MenuWrapper>
+      <TaskBoard isToday={mode === 'Today'} />
+    </>
   );
 };

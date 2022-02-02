@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { DatePicker as DatePickerBase } from '../../../../../../../../parts/date-picker/date-picker';
+import { DatePicker as DatePickerBase } from '../../../../../../../../../../parts/date-picker/date-picker';
 import { ReactComponent as CalendarIconBase } from '@assets/icons/calendar-button.svg';
 
 const Label = styled.label<{ color: string }>`

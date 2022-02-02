@@ -5,11 +5,10 @@ interface BookmarkProps {
   Icon: Function;
   children: ReactNode;
   onClick: () => void;
-  active: boolean;
 }
 
-export const Bookmark = ({ Icon, children, onClick, active }: BookmarkProps) => (
-  <S.Wrapper onClick={onClick} active={active}>
+export const Bookmark = ({ Icon, children, onClick }: BookmarkProps) => (
+  <S.Wrapper onClick={onClick}>
     <Icon />
     <S.Text>{children}</S.Text>
   </S.Wrapper>

@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const Wrapper = styled.div<{ active: boolean }>`
+export const Wrapper = styled.div`
   padding: ${({ theme }) => theme.spacing.small};
   display: flex;
   align-items: center;
@@ -9,12 +9,6 @@ export const Wrapper = styled.div<{ active: boolean }>`
   &:hover {
     background-color: ${({ theme }) => theme.baseColors.grey};
   }
-
-  ${({ active }) =>
-    active &&
-    css`
-      background-color: ${({ theme }) => theme.baseColors.grey};
-    `}
 `;
 
 export const Text = styled.span`
