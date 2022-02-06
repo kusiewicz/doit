@@ -38,7 +38,6 @@ const DatePickerr = styled(DatePickerBase)<{ color: string }>`
   }
 
   &.ant-picker-focused {
-    /* box-shadow: 0 0 0 2px rgb(219 76 63 / 20%) */
     box-shadow: none;
   }
 

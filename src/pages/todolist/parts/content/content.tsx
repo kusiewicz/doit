@@ -4,27 +4,34 @@ import { Bookmark } from './parts/bookmark/bookmark';
 import { IncomingIcon } from './parts/icons/incoming-icon/incoming-icon';
 import { TodayIcon } from './parts/icons/today-icon/today-icon';
 import { TommorowIcon } from './parts/icons/tommorow-icon/tommorow-icon';
-import { TaskBoard } from './parts/task-board/task-board';
+import { Main } from './parts/main/main';
+
+export enum Mode {
+  TODAY = 'Today',
+  TOMORROW = 'Tomorrow',
+  WEEK = 'Week',
+}
 
 export const Content = () => {
-  const [mode, setMode] = useState('Today');
+  const [mode, setMode] = useState(Mode.TODAY);
 
   return (
     <>
       <S.MenuWrapper>
-        <Bookmark Icon={TodayIcon} onClick={() => setMode('Today')}>
+        <Bookmark Icon={TodayIcon} onClick={() => setMode(Mode.TODAY)}>
           Dziś
         </Bookmark>
 
-        <Bookmark Icon={TommorowIcon} onClick={() => setMode('Tomorrow')}>
+        <Bookmark Icon={TommorowIcon} onClick={() => setMode(Mode.TOMORROW)}>
           Jutro
         </Bookmark>
 
-        <Bookmark Icon={IncomingIcon} onClick={() => setMode('Week')}>
+        <Bookmark Icon={IncomingIcon} onClick={() => setMode(Mode.WEEK)}>
           Nadchodzące 7 dni
         </Bookmark>
       </S.MenuWrapper>
-      <TaskBoard isToday={mode === 'Today'} />
+
+      <Main mode={mode} />
     </>
   );
 };

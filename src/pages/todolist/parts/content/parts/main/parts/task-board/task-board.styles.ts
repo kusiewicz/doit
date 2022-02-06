@@ -5,6 +5,10 @@ const Wrapper = styled.div`
   border-radius: 5px;
   border: 1px solid ${({ theme }) => theme.baseColors.grey};
   padding: ${({ theme }) => theme.spacing.normal};
+
+  :focus-within {
+    border-color: rgba(0, 0, 0, .4);
+  }
 `;
 
 const TitleInput = styled.textarea`
@@ -23,10 +27,9 @@ const TitleInput = styled.textarea`
 `;
 
 const DescriptionInput = styled(TitleInput)`
-  height: 28px;
+  height: 35px;
   margin-top: ${({ theme }) => theme.spacing.small};
   font-size: ${({ theme }) => theme.fontSize.xsmall};
-  margin-bottom: ${({ theme }) => theme.spacing.normal};
   font-weight: ${({ theme }) => theme.fontWeight.light};
 `;
 

@@ -12,6 +12,7 @@ const Day = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-size: ${({ theme }) => theme.fontSize.xlarge};
   display: inline-block;
+  margin-right: ${({ theme }) => theme.spacing.xsmall};
 `;
 
 const Date = styled.span`
@@ -19,7 +20,8 @@ const Date = styled.span`
   color: ${({ theme }) => theme.baseColors.darkGrey};
   display: inline-block;
   font-weight: ${({ theme }) => theme.fontWeight.light};
-  margin-left: ${({ theme }) => theme.spacing.xsmall};
+  text-transform: capitalize;
+  margin-bottom: ${({ theme }) => theme.spacing.large};
 `;
 
 const Plus = styled(PlusIcon)`
@@ -27,11 +29,10 @@ const Plus = styled(PlusIcon)`
   margin: auto;
 `;
 
-const AddTask = styled.div`
+const Add = styled.div`
   font-size: ${({ theme }) => theme.fontSize.small};
   color: ${({ theme }) => theme.baseColors.darkGrey};
   font-weight: ${({ theme }) => theme.fontWeight.light};
-  margin-top: ${({ theme }) => theme.spacing.large};
 
   > div {
     border-radius: 50%;
@@ -59,4 +60,4 @@ const AddTask = styled.div`
   }
 `;
 
-export default { Wrapper, Day, Date, AddTask, Plus };
+export default { Wrapper, Day, Date, Plus, Add };

@@ -13,7 +13,19 @@
         ],
         "@utils": [
            "./utils"
-        ]
+        ],
+        "@pages/*":[
+         "./pages/*"
+        ],
+        "@pages":[
+         "./pages"
+        ],
+        "@parts/*":[
+         "./parts/*"
+        ],
+        "@parts":[
+         "./parts"
+      ]
      }
   }
 }

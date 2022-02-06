@@ -1,9 +1,8 @@
 import S from './date-picker.styles';
-import locale from 'antd/es/date-picker/locale/pl_PL';
 import 'dayjs/locale/pl';
 import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
-
+import locale from 'antd/es/date-picker/locale/pl_PL';
 import isTomorrow from 'dayjs/plugin/isTomorrow';
 import isToday from 'dayjs/plugin/isToday';
 

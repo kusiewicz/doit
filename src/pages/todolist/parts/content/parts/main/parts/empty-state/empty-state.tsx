@@ -1,6 +1,12 @@
 import S from './empty-state.styles';
 
-export const EmptyState = ({ isToday }: { isToday?: boolean }) => {
+export const EmptyState = ({
+  isToday,
+  setAddingMode,
+}: {
+  isToday: boolean;
+  setAddingMode: Function;
+}) => {
   const EmptyIcon = () => {
     if (isToday) {
       return <S.EmptyTodayIcon />;
@@ -19,7 +25,7 @@ export const EmptyState = ({ isToday }: { isToday?: boolean }) => {
       <EmptyIcon />
       <S.Text>{Text}</S.Text>
       <S.SubText>{SubText}</S.SubText>
-      <S.AddTaskButton>Dodaj zadanie</S.AddTaskButton>
+      <S.AddTaskButton onClick={() => setAddingMode(true)}>Dodaj zadanie</S.AddTaskButton>
     </S.Wrapper>
   );
 };
