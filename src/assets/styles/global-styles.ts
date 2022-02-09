@@ -36,4 +36,22 @@ export const GlobalStyle = createGlobalStyle<{ theme: any }>`
             color: ${({ theme }) => theme.baseColors.red};
         }
     }
+
+    .ant-select-item-option-content {
+        display: flex;
+        align-items: center;
+        padding: 4px 10px;
+    }
+
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+        background: none;
+    }
+
+    .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector,
+    .ant-select-dropdown,
+    .ant-select-item,
+    .ant-select-selection-item {
+    padding: 0;
+    }
 `;

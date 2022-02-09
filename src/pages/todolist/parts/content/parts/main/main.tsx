@@ -13,13 +13,13 @@ export const Main = ({ mode }: { mode: string }) => {
       <S.Day>{mode === Mode.TODAY ? 'Dziś' : 'Jutro'}</S.Day>
       <S.Date>{getFormattedDate(mode)}</S.Date>
       {addingMode ? (
-        <TaskBoard />
+        <TaskBoard onClose={() => setAddingMode(false)} />
       ) : (
         <>
           <S.Add onClick={() => setAddingMode(true)}>
-            <div>
+            <S.PlusHover>
               <S.Plus />
-            </div>
+            </S.PlusHover>
             Dodaj zadanie
           </S.Add>
           <EmptyState isToday={mode === Mode.TODAY} setAddingMode={setAddingMode} />

@@ -21,23 +21,6 @@ const SubText = styled.p`
   font-weight: ${({ theme }) => theme.fontWeight.light};
 `;
 
-const AddTaskButton = styled.div`
-  background-color: ${({ theme }) => theme.baseColors.red};
-  padding: 6px 12px;
-  color: ${({ theme }) => theme.baseColors.white};
-  font-size: ${({ theme }) => theme.fontSize.xsmall};
-  width: 110px;
-  font-weight: ${({ theme }) => theme.fontWeight.light};
-  border-radius: 3px;
-  line-height: 17px;
-  margin: auto;
-  margin-top: ${({ theme }) => theme.spacing.xxlarge};
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
 const EmptyTodayIcon = styled(EmptyToday)`
   height: 200px;
   width: 220px;
@@ -48,4 +31,4 @@ const EmptyTommorowIcon = styled(EmptyTommorow)`
   width: 220px;
 `;
 
-export default { Wrapper, Text, SubText, AddTaskButton, EmptyTodayIcon, EmptyTommorowIcon };
+export default { Wrapper, Text, SubText, EmptyTodayIcon, EmptyTommorowIcon };

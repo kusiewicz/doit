@@ -29,27 +29,27 @@ const Plus = styled(PlusIcon)`
   margin: auto;
 `;
 
+const PlusHover = styled.div`
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: ${({ theme }) => theme.spacing.small};
+  position: relative;
+  top: 1px;
+`;
+
 const Add = styled.div`
   font-size: ${({ theme }) => theme.fontSize.small};
   color: ${({ theme }) => theme.baseColors.darkGrey};
   font-weight: ${({ theme }) => theme.fontWeight.light};
 
-  > div {
-    border-radius: 50%;
-    width: 17px;
-    height: 17px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: ${({ theme }) => theme.spacing.small};
-    position: relative;
-    top: 1px;
-  }
-
   &:hover {
     color: ${({ theme }) => theme.baseColors.red};
 
-    > div {
+    ${PlusHover} {
       background-color: ${({ theme }) => theme.baseColors.red};
     }
 
@@ -60,4 +60,4 @@ const Add = styled.div`
   }
 `;
 
-export default { Wrapper, Day, Date, Plus, Add };
+export default { Wrapper, Day, Date, Plus, PlusHover, Add };

@@ -1,3 +1,4 @@
+import { Button } from '@parts/button/button';
 import S from './empty-state.styles';
 
 export const EmptyState = ({
@@ -25,7 +26,7 @@ export const EmptyState = ({
       <EmptyIcon />
       <S.Text>{Text}</S.Text>
       <S.SubText>{SubText}</S.SubText>
-      <S.AddTaskButton onClick={() => setAddingMode(true)}>Dodaj zadanie</S.AddTaskButton>
+      <Button onClick={() => setAddingMode(true)}>Dodaj zadanie</Button>
     </S.Wrapper>
   );
 };
