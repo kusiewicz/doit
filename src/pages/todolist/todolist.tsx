@@ -1,7 +1,7 @@
 import S from './todolist.styles';
 
-import { Content } from './parts/content/content';
-import { Nav } from './parts/nav/nav';
+import { Content } from './content/content';
+import { Nav } from './nav/nav';
 
 export const Todolist = () => {
   return (

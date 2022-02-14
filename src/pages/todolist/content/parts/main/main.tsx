@@ -1,4 +1,4 @@
-import { getFormattedDate } from '@utils/getFormattedDate';
+import { getFormattedDate } from '@utils/date-to-weekday-day-month';
 import { useState } from 'react';
 import S from './main.styles';
 import { EmptyState } from './parts/empty-state/empty-state';
