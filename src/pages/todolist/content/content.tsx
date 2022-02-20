@@ -5,6 +5,7 @@ import { IncomingIcon } from './parts/icons/incoming-icon/incoming-icon';
 import { TodayIcon } from './parts/icons/today-icon/today-icon';
 import { TommorowIcon } from './parts/icons/tommorow-icon/tommorow-icon';
 import { Main } from './parts/main/main';
+import { test } from '../../../firebase/firebase';
 
 export enum Mode {
   TODAY = 'Today',
@@ -14,6 +15,8 @@ export enum Mode {
 
 export const Content = () => {
   const [mode, setMode] = useState(Mode.TODAY);
+
+  test();
 
   return (
     <>

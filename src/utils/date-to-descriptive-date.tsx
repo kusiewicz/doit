@@ -1,6 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs';
 
-export const dateToCustomButton = (value: Dayjs) => {
+export const dateToDescriptiveDate = (value: Dayjs) => {
   if (value.isToday()) {
     return 'Dziś';
   }

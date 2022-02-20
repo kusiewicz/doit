@@ -17,18 +17,27 @@ type Colors =
   | 'buttonTomorrow'
   | 'buttonWeek'
   | 'buttonAnother'
-  | 'hoveredPicker';
+  | 'hoveredPicker'
+  | 'description'
+  | 'taskBorder'
+  | 'checkbox';
 
 type BaseColors =
   | 'white'
+  | 'offWhite'
   | 'black'
   | 'lightGrey'
+  | 'basicGrey'
   | 'grey'
   | 'darkGrey'
   | 'red'
   | 'lightGreen'
   | 'blue'
-  | 'purple';
+  | 'purple'
+  | 'orange'
+  | 'ashGrey'
+  | 'rust'
+  | 'priorityRed';
 
 type Device = 'mobile' | 'desktop' | 'tablet';
 
@@ -46,25 +55,34 @@ interface Theme {
 const baseColors: { [key in BaseColors]: string } = {
   black: '#000',
   white: '#FFF',
+  offWhite: '#F0F0F0',
   lightGrey: '#FAFAFA',
+  basicGrey: 'grey',
+  orange: '#EB8909',
+  rust: '#AD6200',
   grey: '#CCCCCC',
+  ashGrey: '#A8A5A4',
   darkGrey: '#808080',
   red: '#DB4C3F',
+  priorityRed: '#D1493B',
   lightGreen: '#058236',
   blue: '#246FE0',
   purple: '#692FC2',
 };
 
 const colors: { [key in Colors]: string } = {
-  lowPriority: '#246FE0',
-  mediumPriority: '#EB8909',
-  highPriority: '#D1493B',
-  placeholder: '#A8A5A4',
-  buttonToday: '#058527',
-  buttonTomorrow: '#AD6200',
-  buttonWeek: '#692FC2',
-  buttonAnother: '#808080',
-  hoveredPicker: '#EEEEEE',
+  lowPriority: baseColors.blue,
+  mediumPriority: baseColors.orange,
+  highPriority: baseColors.priorityRed,
+  placeholder: baseColors.ashGrey,
+  buttonToday: baseColors.lightGreen,
+  buttonTomorrow: baseColors.rust,
+  buttonWeek: baseColors.purple,
+  buttonAnother: baseColors.darkGrey,
+  hoveredPicker: baseColors.offWhite,
+  description: baseColors.ashGrey,
+  taskBorder: baseColors.offWhite,
+  checkbox: baseColors.basicGrey,
 };
 
 const device: { [key in Device]: string } = {

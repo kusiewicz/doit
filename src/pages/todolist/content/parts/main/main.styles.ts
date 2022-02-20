@@ -45,6 +45,7 @@ const Add = styled.div`
   font-size: ${({ theme }) => theme.fontSize.small};
   color: ${({ theme }) => theme.baseColors.darkGrey};
   font-weight: ${({ theme }) => theme.fontWeight.light};
+  cursor: pointer;
 
   &:hover {
     color: ${({ theme }) => theme.baseColors.red};

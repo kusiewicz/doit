@@ -4,7 +4,7 @@ dayjs.locale('pl');
 
 import { Mode } from '@pages/todolist/content/content';
 
-export const getFormattedDate = (mode: string) => {
+export const dateToWeekdayDayMonth = (mode: string) => {
   if (mode === Mode.TODAY) {
     return dayjs().format('ddd D MMM');
   }

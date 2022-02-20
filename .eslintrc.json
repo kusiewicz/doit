@@ -26,7 +26,8 @@
             ["@assets", "./src/assets"],
             ["@utils", "./src/utils"],
             ["@pages", "./src/pages"],
-            ["@parts", "./src/parts"]
+            ["@parts", "./src/parts"],
+            ["@firebase", "./src/firebase"]
           ],
           "extensions": [".ts", ".js", ".jsx", ".json", ".tsx"]
         }

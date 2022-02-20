@@ -25,6 +25,12 @@
         ],
         "@parts":[
          "./parts"
+      ],
+      "@firebase/*":[
+         "./firebase/*"
+        ],
+        "@firebase":[
+         "./firebase"
       ]
      }
   }

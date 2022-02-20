@@ -1,7 +1,7 @@
-import { DatePicker } from './parts/button-date-picker/button-date-picker';
 import { useFormik } from 'formik';
 import S from './task-board.styles';
 import dayjs, { Dayjs } from 'dayjs';
+import { DatePicker } from './parts/date-picker/date-picker';
 
 export const TaskBoard = ({ onClose }: { onClose: () => void }) => {
   const taskPriorities = [
