@@ -26,11 +26,11 @@
         "@parts":[
          "./parts"
       ],
-      "@firebase/*":[
-         "./firebase/*"
+      "@lib/*":[
+         "./lib/*"
         ],
-        "@firebase":[
-         "./firebase"
+        "@lib":[
+         "./lib"
       ]
      }
   }

@@ -1,6 +1,5 @@
-// import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
-import firebase from 'firebase/app';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDzFPw7IqGqtIIrXizL1RbO4oxy5jfHuZU',
@@ -12,7 +11,8 @@ const firebaseConfig = {
   measurementId: 'G-0PP3L9RRWC',
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebase = initializeApp(firebaseConfig);
 
+const db = getFirestore();
 
-export const test = () => console.log('esasa');
+export { firebase, db };

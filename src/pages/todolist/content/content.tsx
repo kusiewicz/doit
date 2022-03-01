@@ -4,8 +4,7 @@ import { Bookmark } from './parts/bookmark/bookmark';
 import { IncomingIcon } from './parts/icons/incoming-icon/incoming-icon';
 import { TodayIcon } from './parts/icons/today-icon/today-icon';
 import { TommorowIcon } from './parts/icons/tommorow-icon/tommorow-icon';
-import { Main } from './parts/main/main';
-import { test } from '../../../firebase/firebase';
+import { Tasks } from './parts/tasks/tasks';
 
 export enum Mode {
   TODAY = 'Today',
@@ -16,11 +15,9 @@ export enum Mode {
 export const Content = () => {
   const [mode, setMode] = useState(Mode.TODAY);
 
-  test();
-
   return (
     <>
-      <S.MenuWrapper>
+      <S.Menu>
         <Bookmark Icon={TodayIcon} onClick={() => setMode(Mode.TODAY)}>
           Dziś
         </Bookmark>
@@ -32,9 +29,9 @@ export const Content = () => {
         <Bookmark Icon={IncomingIcon} onClick={() => setMode(Mode.WEEK)}>
           Nadchodzące 7 dni
         </Bookmark>
-      </S.MenuWrapper>
+      </S.Menu>
 
-      <Main mode={mode} />
+      <Tasks mode={mode} />
     </>
   );
 };

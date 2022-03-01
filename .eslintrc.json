@@ -27,7 +27,7 @@
             ["@utils", "./src/utils"],
             ["@pages", "./src/pages"],
             ["@parts", "./src/parts"],
-            ["@firebase", "./src/firebase"]
+            ["@lib", "./src/lib"]
           ],
           "extensions": [".ts", ".js", ".jsx", ".json", ".tsx"]
         }
