@@ -1,13 +1,7 @@
 import { Button } from '@parts/button/button';
 import S from './empty-state.styles';
 
-export const EmptyState = ({
-  isToday,
-  setAddingMode,
-}: {
-  isToday: boolean;
-  setAddingMode: Function;
-}) => {
+export const EmptyState = ({ isToday, setAddMode }: { isToday: boolean; setAddMode: Function }) => {
   const EmptyIcon = () => {
     if (isToday) {
       return <S.EmptyTodayIcon />;
@@ -26,7 +20,7 @@ export const EmptyState = ({
       <EmptyIcon />
       <S.Text>{Text}</S.Text>
       <S.SubText>{SubText}</S.SubText>
-      <Button onClick={() => setAddingMode(true)}>Dodaj zadanie</Button>
+      <Button onClick={() => setAddMode(true)}>Dodaj zadanie</Button>
     </S.Wrapper>
   );
 };

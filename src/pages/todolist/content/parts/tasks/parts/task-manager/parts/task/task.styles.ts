@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const TaskContent = styled.div`
+const Task = styled.div`
   display: inline-block;
   padding: ${({ theme }) => theme.spacing.small};
   padding-bottom: 3px;
@@ -51,7 +51,7 @@ const CalendarIcon = styled(CalendarIconBase)`
 export default {
   Wrapper,
   Title,
-  TaskContent,
+  Task,
   Description,
   Checkbox,
   SmallDatePicker,

@@ -1,19 +1,20 @@
 import S from './task.styles';
 import dayjs from 'dayjs';
 
-export const Task = () => {
+export const Task = ({ title, description }: { title: string; description: string }) => {
   return (
     <S.Wrapper>
       <S.Checkbox />
-      <S.TaskContent>
-        <S.Title>Tytuł</S.Title>
-        <S.Description>Opis</S.Description>
+
+      <S.Task>
+        <S.Title>{title}</S.Title>
+        <S.Description>{description}</S.Description>
         <S.SmallDatePicker
           date={dayjs()}
           onChange={() => console.log('eee')}
           icon={<S.CalendarIcon />}
         />
-      </S.TaskContent>
+      </S.Task>
     </S.Wrapper>
   );
 };
