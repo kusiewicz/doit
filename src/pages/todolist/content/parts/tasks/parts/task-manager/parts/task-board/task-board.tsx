@@ -2,9 +2,10 @@ import { useFormik } from 'formik';
 import S from './task-board.styles';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker } from './parts/date-picker/date-picker';
+import { createTask } from '../../../../api/get-set-tasks';
 
 export const TaskBoard = ({ onClose }: { onClose: () => void }) => {
-  const taskPriorities = [
+  const priorities = [
     {
       priority: 'Low',
       color: 'lowPriority',
@@ -29,7 +30,10 @@ export const TaskBoard = ({ onClose }: { onClose: () => void }) => {
       priority: 'Low',
       date: dayjs(),
     },
-    onSubmit: (v) => console.log(v),
+    onSubmit: (v) => {
+      const vals = { ...v, date: v.date.toDate() };
+      createTask(vals);
+    },
   });
 
   return (
@@ -41,7 +45,7 @@ export const TaskBoard = ({ onClose }: { onClose: () => void }) => {
           <DatePicker
             date={values.date}
             onChange={(v: Dayjs) => {
-              setFieldValue('date', v);
+              setFieldValue('date', v.toDate());
             }}
           />
           <S.Select
@@ -55,7 +59,7 @@ export const TaskBoard = ({ onClose }: { onClose: () => void }) => {
             }}
             onChange={(v) => setFieldValue('priority', v)}
           >
-            {taskPriorities.map((v) => (
+            {priorities.map((v) => (
               <S.Option key={v.title} value={v.priority} icon={<S.PriorityIcon color={v.color} />}>
                 <S.PriorityIcon color={v.color} />
                 <S.Priority>{v.title}</S.Priority>
