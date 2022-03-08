@@ -11,7 +11,7 @@ export const TaskManager = ({
 }: {
   isAddMode: boolean;
   setAddMode: Function;
-  tasks: TaskData[];
+  tasks?: TaskData[];
 }) => {
   return (
     <>

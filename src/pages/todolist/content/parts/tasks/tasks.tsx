@@ -11,13 +11,14 @@ import { useState } from 'react';
 export const Tasks = ({ mode }: { mode: string }) => {
   const [isAddMode, setAddMode] = useState(false);
   const { data } = useQuery('tasks', getTasks);
+  console.log(data);
 
   return (
     <S.Wrapper>
       <S.Day>{mode === Mode.TODAY ? 'Dziś' : 'Jutro'}</S.Day>
       <S.Date>{dateToWeekdayDayMonth(mode)}</S.Date>
 
-      {data ? (
+      {(data && data.length > 0) || isAddMode ? (
         <TaskManager isAddMode={isAddMode} setAddMode={setAddMode} tasks={data} />
       ) : (
         <EmptyState isToday setAddMode={setAddMode} />

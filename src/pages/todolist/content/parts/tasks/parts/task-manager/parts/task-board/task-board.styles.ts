@@ -4,7 +4,7 @@ import { Select as SelectBase } from 'antd';
 import { ReactComponent as PriorityIconBase } from '@assets/icons/priority-flag.svg';
 import { ReactComponent as CheckmarkBase } from '@assets/icons/checkmark.svg';
 
-const TextboxWrapper = styled.div`
+const Textbox = styled.div`
   width: 100%;
   border-radius: 5px;
   border: 1px solid ${({ theme }) => theme.baseColors.grey};
@@ -17,7 +17,7 @@ const TextboxWrapper = styled.div`
   }
 `;
 
-const TaskTitle = styled.textarea`
+const Title = styled.textarea`
   height: 21px;
   font-size: ${({ theme }) => theme.fontSize.small};
   width: 100%;
@@ -33,7 +33,7 @@ const TaskTitle = styled.textarea`
   }
 `;
 
-const TaskDescription = styled(TaskTitle)`
+const Description = styled(Title)`
   height: 35px;
   margin-top: ${({ theme }) => theme.spacing.small};
   font-size: ${({ theme }) => theme.fontSize.xsmall};
@@ -90,9 +90,9 @@ const Priority = styled.span`
 const Checkmark = styled(CheckmarkBase)``;
 
 export default {
-  TextboxWrapper,
-  TaskTitle,
-  TaskDescription,
+  Textbox,
+  Title,
+  Description,
   Add,
   Checkmark,
   Cancel,

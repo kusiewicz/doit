@@ -33,19 +33,20 @@ export const TaskBoard = ({ onClose }: { onClose: () => void }) => {
     onSubmit: (v) => {
       const vals = { ...v, date: v.date.toDate() };
       createTask(vals);
+      onClose();
     },
   });
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <S.TextboxWrapper>
-          <S.TaskTitle {...getFieldProps('title')} placeholder="np. Zorganizuj spotkanie na 11" />
-          <S.TaskDescription {...getFieldProps('description')} placeholder="Opis" />
+        <S.Textbox>
+          <S.Title {...getFieldProps('title')} placeholder="np. Zorganizuj spotkanie na 11" />
+          <S.Description {...getFieldProps('description')} placeholder="Opis" />
           <DatePicker
             date={values.date}
             onChange={(v: Dayjs) => {
-              setFieldValue('date', v.toDate());
+              setFieldValue('date', v);
             }}
           />
           <S.Select
@@ -66,10 +67,12 @@ export const TaskBoard = ({ onClose }: { onClose: () => void }) => {
               </S.Option>
             ))}
           </S.Select>
-        </S.TextboxWrapper>
+        </S.Textbox>
 
         <S.Add type="submit">Dodaj zadanie</S.Add>
-        <S.Cancel onClick={onClose}>Anuluj</S.Cancel>
+        <S.Cancel type="button" onClick={onClose}>
+          Anuluj
+        </S.Cancel>
       </form>
     </>
   );
