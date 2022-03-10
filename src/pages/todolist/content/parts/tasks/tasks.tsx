@@ -6,12 +6,15 @@ import { TaskManager } from './parts/task-manager/task-manager';
 import { getTasks } from './api/get-set-tasks';
 import { useQuery } from 'react-query';
 import { EmptyState } from './parts/empty-state/empty-state';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Tasks = ({ mode }: { mode: string }) => {
   const [isAddMode, setAddMode] = useState(false);
-  const { data } = useQuery('tasks', getTasks);
-  console.log(data);
+  const { data, refetch } = useQuery('tasks', getTasks);
+
+  useEffect(() => {
+    refetch();
+  }, [isAddMode]);
 
   return (
     <S.Wrapper>

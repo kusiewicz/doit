@@ -1,5 +1,5 @@
 import { TaskData } from '../../api/get-set-tasks';
-import { TaskBoard } from './parts/task-board/task-board';
+import { Editor } from './parts/editor/editor';
 import { Task } from './parts/task/task';
 import S from './task-manager.styles';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,7 +16,7 @@ export const TaskManager = ({
   return (
     <>
       {isAddMode ? (
-        <TaskBoard onClose={() => setAddMode(false)} />
+        <Editor onClose={() => setAddMode(false)} />
       ) : (
         <>
           {tasks &&

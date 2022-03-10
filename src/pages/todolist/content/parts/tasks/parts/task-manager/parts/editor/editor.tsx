@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
-import S from './task-board.styles';
+import S from './editor.styles';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker } from './parts/date-picker/date-picker';
 import { createTask } from '../../../../api/get-set-tasks';
 
-export const TaskBoard = ({ onClose }: { onClose: () => void }) => {
+export const Editor = ({ onClose }: { onClose: () => void }) => {
   const priorities = [
     {
       priority: 'Low',
