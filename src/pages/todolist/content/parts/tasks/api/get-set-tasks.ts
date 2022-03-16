@@ -1,13 +1,20 @@
-import { collection, getDocs, doc, setDoc, QueryDocumentSnapshot } from '@firebase/firestore';
+import {
+  collection,
+  getDocs,
+  doc,
+  setDoc,
+  updateDoc,
+  QueryDocumentSnapshot,
+} from '@firebase/firestore';
 import { convertToArray } from '@utils/firebase-convert-to-array';
 import { db } from '@lib/firebase';
-import { v4 as uuidv4 } from 'uuid';
 
 export interface TaskData {
   title: string;
   description: string;
   priority: string;
-  date: Date;
+  id: string;
+  date: Date | string;
 }
 
 const taskConverter = {
@@ -26,6 +33,9 @@ export const getTasks = async () => {
 };
 
 export const createTask = async (task: TaskData) => {
-  const id = uuidv4();
-  await setDoc(doc(db, 'tasks', id), task);
+  await setDoc(doc(db, 'tasks', task.id), task);
+};
+
+export const editTask = async (id: string, editedField: { [key: string]: Partial<unknown> }) => {
+  await updateDoc(doc(db, 'tasks', id), editedField);
 };

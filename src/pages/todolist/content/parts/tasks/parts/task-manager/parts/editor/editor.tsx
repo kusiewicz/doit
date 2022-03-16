@@ -3,6 +3,7 @@ import S from './editor.styles';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker } from './parts/date-picker/date-picker';
 import { createTask } from '../../../../api/get-set-tasks';
+import { v4 as uuidv4 } from 'uuid';
 
 export const Editor = ({ onClose }: { onClose: () => void }) => {
   const priorities = [
@@ -29,9 +30,10 @@ export const Editor = ({ onClose }: { onClose: () => void }) => {
       description: '',
       priority: 'Low',
       date: dayjs(),
+      id: '',
     },
     onSubmit: (v) => {
-      const vals = { ...v, date: v.date.toDate() };
+      const vals = { ...v, id: uuidv4(), date: v.date.toDate() };
       createTask(vals);
       onClose();
     },

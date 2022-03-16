@@ -2,7 +2,6 @@ import { TaskData } from '../../api/get-set-tasks';
 import { Editor } from './parts/editor/editor';
 import { Task } from './parts/task/task';
 import S from './task-manager.styles';
-import { v4 as uuidv4 } from 'uuid';
 
 export const TaskManager = ({
   isAddMode,
@@ -19,8 +18,7 @@ export const TaskManager = ({
         <Editor onClose={() => setAddMode(false)} />
       ) : (
         <>
-          {tasks &&
-            tasks.map((v) => <Task title={v.title} description={v.description} key={uuidv4()} />)}
+          {tasks && tasks.map((data) => <Task data={data} />)}
 
           <S.Add onClick={() => setAddMode(true)}>
             <S.PlusHover>

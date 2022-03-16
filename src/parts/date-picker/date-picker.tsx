@@ -12,7 +12,7 @@ dayjs.extend(isTomorrow);
 dayjs.locale('pl');
 
 export const DatePicker = ({
-  date,
+  date: incomingDate,
   onChange,
   icon,
   className,
@@ -23,6 +23,7 @@ export const DatePicker = ({
   className?: string;
 }) => {
   const [color, setColor] = useState('buttonToday');
+  const [date, setDate] = useState(incomingDate);
 
   useEffect(() => {
     if (date.isToday()) {
@@ -47,8 +48,13 @@ export const DatePicker = ({
   return (
     <S.DatePicker
       locale={locale}
-      onChange={(v) => onChange(v)}
-      defaultValue={dayjs()}
+      onChange={(v) => {
+        onChange(v);
+        if (v) {
+          setDate(v);
+        }
+      }}
+      defaultValue={dayjs(date)}
       allowClear={false}
       format={dateToDescriptiveDate}
       color={color}
