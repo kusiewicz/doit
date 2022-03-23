@@ -2,25 +2,44 @@ import { TaskData } from '../../api/get-set-tasks';
 import { Editor } from './parts/editor/editor';
 import { Task } from './parts/task/task';
 import S from './task-manager.styles';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Mode } from '../../tasks';
 
 export const TaskManager = ({
-  isAddMode,
-  setAddMode,
+  mode,
+  setMode,
   tasks,
 }: {
-  isAddMode: boolean;
-  setAddMode: Function;
+  mode: Mode;
+  setMode: Function;
   tasks?: TaskData[];
 }) => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+
   return (
     <>
-      {isAddMode ? (
-        <Editor onClose={() => setAddMode(false)} />
+      {mode === Mode.ADD || mode === Mode.EDIT ? (
+        <Editor
+          onClose={() => {
+            setMode(Mode.NORMAL);
+            navigate('/app');
+          }}
+          taskId={id}
+        />
       ) : (
         <>
-          {tasks && tasks.map((data) => <Task data={data} />)}
+          {tasks?.map((data) => (
+            <Task
+              onClick={() => {
+                setMode(Mode.EDIT);
+                navigate(`task/${data.id}`);
+              }}
+              data={data}
+            />
+          ))}
 
-          <S.Add onClick={() => setAddMode(true)}>
+          <S.Add onClick={() => setMode(Mode.ADD)}>
             <S.PlusHover>
               <S.Plus />
             </S.PlusHover>

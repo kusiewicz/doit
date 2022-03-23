@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: any }>`
         height: 100%;
     }
 
+
     .ant-picker-cell {
         .ant-picker-cell-inner {
             border-radius: 50px;

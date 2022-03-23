@@ -1,13 +1,15 @@
-import { Todolist } from './pages/todolist/todolist';
 import { ThemeProvider } from './context/theme-provider';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
+import { BrowserRouter } from 'react-router-dom';
+import { AppRoutes } from './routes/app-routes';
 const queryClient = new QueryClient();
 
 export const App = () => (
-  <ThemeProvider>
-    <QueryClientProvider client={queryClient}>
-      <Todolist />
-    </QueryClientProvider>
-  </ThemeProvider>
+  <BrowserRouter>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <AppRoutes />
+      </QueryClientProvider>
+    </ThemeProvider>
+  </BrowserRouter>
 );

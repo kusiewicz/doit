@@ -1,37 +1,31 @@
-import { useState } from 'react';
 import S from './content.styles';
 import { Bookmark } from './parts/bookmark/bookmark';
 import { IncomingIcon } from './parts/icons/incoming-icon/incoming-icon';
 import { TodayIcon } from './parts/icons/today-icon/today-icon';
 import { TommorowIcon } from './parts/icons/tommorow-icon/tommorow-icon';
 import { Tasks } from './parts/tasks/tasks';
-
-export enum Mode {
-  TODAY = 'Today',
-  TOMORROW = 'Tomorrow',
-  WEEK = 'Week',
-}
+import { useNavigate } from 'react-router-dom';
 
 export const Content = () => {
-  const [mode, setMode] = useState(Mode.TODAY);
+  const navigate = useNavigate();
 
   return (
     <>
       <S.Menu>
-        <Bookmark Icon={TodayIcon} onClick={() => setMode(Mode.TODAY)}>
+        <Bookmark Icon={TodayIcon} onClick={() => navigate('/app/today')}>
           Dziś
         </Bookmark>
 
-        <Bookmark Icon={TommorowIcon} onClick={() => setMode(Mode.TOMORROW)}>
+        <Bookmark Icon={TommorowIcon} onClick={() => navigate('/app/tomorrow')}>
           Jutro
         </Bookmark>
 
-        <Bookmark Icon={IncomingIcon} onClick={() => setMode(Mode.WEEK)}>
+        <Bookmark Icon={IncomingIcon} onClick={() => navigate('/app/upcoming')}>
           Nadchodzące 7 dni
         </Bookmark>
       </S.Menu>
 
-      <Tasks mode={mode} />
+      <Tasks />
     </>
   );
 };

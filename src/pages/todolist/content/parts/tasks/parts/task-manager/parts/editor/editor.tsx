@@ -5,7 +5,7 @@ import { DatePicker } from './parts/date-picker/date-picker';
 import { createTask } from '../../../../api/get-set-tasks';
 import { v4 as uuidv4 } from 'uuid';
 
-export const Editor = ({ onClose }: { onClose: () => void }) => {
+export const Editor = ({ onClose, taskId }: { onClose: () => void; taskId?: string }) => {
   const priorities = [
     {
       priority: 'Low',
@@ -71,7 +71,7 @@ export const Editor = ({ onClose }: { onClose: () => void }) => {
           </S.Select>
         </S.Textbox>
 
-        <S.Add type="submit">Dodaj zadanie</S.Add>
+        <S.Add type="submit">{taskId ? 'Edytuj' : 'Dodaj zadanie'}</S.Add>
         <S.Cancel type="button" onClick={onClose}>
           Anuluj
         </S.Cancel>

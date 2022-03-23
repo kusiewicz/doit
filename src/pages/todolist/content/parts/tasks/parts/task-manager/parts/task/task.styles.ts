@@ -12,6 +12,7 @@ const Task = styled.div`
   display: inline-block;
   padding: ${({ theme }) => theme.spacing.small};
   padding-bottom: 3px;
+  width: 100%;
 `;
 
 const Title = styled.p`

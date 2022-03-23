@@ -42,4 +42,6 @@ const DatePicker = styled(DatePickerBase)<{ color: string }>`
   }
 `;
 
-export default { DatePicker };
+const Wrapper = styled.div``;
+
+export default { DatePicker, Wrapper };

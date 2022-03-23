@@ -5,6 +5,7 @@ import {
   setDoc,
   updateDoc,
   QueryDocumentSnapshot,
+  Timestamp,
 } from '@firebase/firestore';
 import { convertToArray } from '@utils/firebase-convert-to-array';
 import { db } from '@lib/firebase';
@@ -14,7 +15,7 @@ export interface TaskData {
   description: string;
   priority: string;
   id: string;
-  date: Date | string;
+  date: Timestamp;
 }
 
 const taskConverter = {
@@ -32,7 +33,7 @@ export const getTasks = async () => {
   return dane;
 };
 
-export const createTask = async (task: TaskData) => {
+export const createTask = async (task: Omit<TaskData, 'date'> & { date: Date }) => {
   await setDoc(doc(db, 'tasks', task.id), task);
 };
 

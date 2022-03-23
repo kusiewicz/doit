@@ -46,22 +46,24 @@ export const DatePicker = ({
   }, [date]);
 
   return (
-    <S.DatePicker
-      locale={locale}
-      onChange={(v) => {
-        onChange(v);
-        if (v) {
-          setDate(v);
-        }
-      }}
-      defaultValue={dayjs(date)}
-      allowClear={false}
-      format={dateToDescriptiveDate}
-      color={color}
-      suffixIcon={icon}
-      className={className}
-      showToday={false}
-      disabledDate={(v) => v.isBefore(dayjs().subtract(1, 'day'))}
-    />
+    <S.Wrapper onClick={(e) => e.stopPropagation()}>
+      <S.DatePicker
+        locale={locale}
+        onChange={(v) => {
+          onChange(v);
+          if (v) {
+            setDate(v);
+          }
+        }}
+        defaultValue={dayjs(date)}
+        allowClear={false}
+        format={dateToDescriptiveDate}
+        color={color}
+        suffixIcon={icon}
+        className={className}
+        showToday={false}
+        disabledDate={(v) => v.isBefore(dayjs().subtract(1, 'day'))}
+      />
+    </S.Wrapper>
   );
 };

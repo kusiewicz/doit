@@ -1,30 +1,43 @@
 import { dateToWeekdayDayMonth } from '@utils/date-to-weekday-day-month';
 import S from './tasks.styles';
-// import { EmptyState } from './parts/empty-state/empty-state';
-import { Mode } from '../../content';
 import { TaskManager } from './parts/task-manager/task-manager';
 import { getTasks } from './api/get-set-tasks';
 import { useQuery } from 'react-query';
 import { EmptyState } from './parts/empty-state/empty-state';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-export const Tasks = ({ mode }: { mode: string }) => {
-  const [isAddMode, setAddMode] = useState(false);
+export enum Mode {
+  NORMAL = 'normal',
+  EDIT = 'edit',
+  ADD = 'add',
+}
+
+export const Tasks = () => {
+  const [mode, setMode] = useState(Mode.NORMAL);
+
   const { data, refetch } = useQuery('tasks', getTasks);
+  const { tab } = useParams();
 
   useEffect(() => {
-    refetch();
-  }, [isAddMode]);
+    if (!data) {
+      refetch();
+    }
+  }, [tab]);
+
+  const isToday = tab === 'today';
+
+  const day = isToday ? 'Dziś' : 'Jutro';
 
   return (
     <S.Wrapper>
-      <S.Day>{mode === Mode.TODAY ? 'Dziś' : 'Jutro'}</S.Day>
-      <S.Date>{dateToWeekdayDayMonth(mode)}</S.Date>
+      <S.Day>{day}</S.Day>
+      <S.Date>{dateToWeekdayDayMonth(day)}</S.Date>
 
-      {(data && data.length > 0) || isAddMode ? (
-        <TaskManager isAddMode={isAddMode} setAddMode={setAddMode} tasks={data} />
+      {data?.[0] ? (
+        <TaskManager mode={mode} setMode={setMode} tasks={data} />
       ) : (
-        <EmptyState isToday setAddMode={setAddMode} />
+        <EmptyState setMode={setMode} isToday={isToday} />
       )}
     </S.Wrapper>
   );
