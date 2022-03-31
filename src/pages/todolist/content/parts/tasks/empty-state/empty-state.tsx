@@ -1,7 +1,7 @@
 import { Button } from '@parts/button/button';
 import S from './empty-state.styles';
 
-import { Mode } from '../../tasks';
+import { Mode } from '../tasks';
 
 export const EmptyState = ({ isToday, setMode }: { isToday?: boolean; setMode: Function }) => {
   const EmptyIcon = () => {

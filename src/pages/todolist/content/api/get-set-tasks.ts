@@ -3,6 +3,7 @@ import {
   getDocs,
   doc,
   setDoc,
+  getDoc,
   updateDoc,
   QueryDocumentSnapshot,
   Timestamp,
@@ -31,6 +32,12 @@ export const getTasks = async () => {
   const dane = convertToArray(tasks);
 
   return dane;
+};
+
+export const getTask = async (id: string) => {
+  const task = await getDoc(doc(db, 'tasks', id).withConverter(taskConverter));
+
+  return task.data();
 };
 
 export const createTask = async (task: Omit<TaskData, 'date'> & { date: string }) => {

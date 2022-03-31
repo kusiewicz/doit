@@ -1,9 +1,9 @@
 import { dateToWeekdayDayMonth } from '@utils/date-to-weekday-day-month';
 import S from './tasks.styles';
-import { TaskManager } from './parts/task-manager/task-manager';
-import { getTasks } from './api/get-set-tasks';
+import { TaskManager } from './task-manager/task-manager';
+import { getTasks } from '@pages/todolist/content/api/get-set-tasks';
 import { useQuery } from 'react-query';
-import { EmptyState } from './parts/empty-state/empty-state';
+import { EmptyState } from './empty-state/empty-state';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 

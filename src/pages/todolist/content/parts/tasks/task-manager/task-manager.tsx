@@ -1,9 +1,9 @@
-import { TaskData } from '../../api/get-set-tasks';
-import { Editor } from './parts/editor/editor';
-import { Task } from './parts/task/task';
+import { TaskData } from '@pages/todolist/content/api/get-set-tasks';
+import { Editor } from './editor/editor';
+import { Task } from './task/task';
 import S from './task-manager.styles';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Mode } from '../../tasks';
+import { useNavigate } from 'react-router-dom';
+import { Mode } from '../tasks';
 
 export const TaskManager = ({
   mode,
@@ -15,7 +15,6 @@ export const TaskManager = ({
   tasks?: TaskData[];
 }) => {
   const navigate = useNavigate();
-  const { id } = useParams();
 
   return (
     <>
@@ -25,7 +24,6 @@ export const TaskManager = ({
             setMode(Mode.NORMAL);
             navigate('/app');
           }}
-          taskId={id}
         />
       ) : (
         <>

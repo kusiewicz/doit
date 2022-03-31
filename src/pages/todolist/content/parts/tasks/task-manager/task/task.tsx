@@ -1,6 +1,6 @@
 import S from './task.styles';
 import dayjs, { Dayjs } from 'dayjs';
-import { editTask, TaskData } from '../../../../api/get-set-tasks';
+import { editTask, TaskData } from '@pages/todolist/content/api/get-set-tasks';
 
 export const Task = ({
   data,

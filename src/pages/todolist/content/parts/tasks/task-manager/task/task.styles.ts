@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Checkbox as CheckboxBase } from './parts/checkbox/checkbox';
+import { Checkbox as CheckboxBase } from './checkbox/checkbox';
 import { DatePicker as DatePickerBase } from '@parts/date-picker/date-picker';
 import { ReactComponent as CalendarIconBase } from '@assets/icons/small-calendar.svg';
 
