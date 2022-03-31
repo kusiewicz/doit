@@ -36,6 +36,7 @@ export const TaskManager = ({
                 navigate(`task/${data.id}`);
               }}
               data={data}
+              key={data.id}
             />
           ))}
 

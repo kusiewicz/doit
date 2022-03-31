@@ -9,17 +9,18 @@ export const Task = ({
   data: TaskData;
   onClick: React.MouseEventHandler<HTMLDivElement>;
 }) => {
+  const { id, title, description, date } = data;
+
   return (
     <S.Wrapper>
       <S.Checkbox />
-
       <S.Task onClick={onClick}>
-        <S.Title>{data.title}</S.Title>
-        <S.Description>{data.description}</S.Description>
+        <S.Title>{title}</S.Title>
+        <S.Description>{description}</S.Description>
         <S.SmallDatePicker
-          date={dayjs(data.date.toDate())}
+          date={dayjs(date.toLocaleString())}
           onChange={(v: Dayjs) => {
-            editTask(data.id, { date: v.toISOString() });
+            editTask(id, { date: v.toISOString() });
           }}
           icon={<S.CalendarIcon />}
         />

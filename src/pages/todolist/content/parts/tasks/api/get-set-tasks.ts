@@ -15,7 +15,7 @@ export interface TaskData {
   description: string;
   priority: string;
   id: string;
-  date: Timestamp;
+  date: Date | Timestamp;
 }
 
 const taskConverter = {
@@ -33,7 +33,7 @@ export const getTasks = async () => {
   return dane;
 };
 
-export const createTask = async (task: Omit<TaskData, 'date'> & { date: Date }) => {
+export const createTask = async (task: Omit<TaskData, 'date'> & { date: string }) => {
   await setDoc(doc(db, 'tasks', task.id), task);
 };
 

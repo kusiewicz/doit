@@ -33,7 +33,7 @@ export const Editor = ({ onClose, taskId }: { onClose: () => void; taskId?: stri
       id: '',
     },
     onSubmit: (v) => {
-      const vals = { ...v, id: uuidv4(), date: v.date.toDate() };
+      const vals = { ...v, id: uuidv4(), date: v.date.toISOString() };
       createTask(vals);
       onClose();
     },
