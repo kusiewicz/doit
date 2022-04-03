@@ -23,6 +23,7 @@ const Add = styled.div`
   color: ${({ theme }) => theme.baseColors.darkGrey};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   cursor: pointer;
+  padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.normal};
 
   &:hover {
     color: ${({ theme }) => theme.baseColors.red};

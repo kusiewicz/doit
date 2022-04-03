@@ -2,12 +2,12 @@ import { useFormik } from 'formik';
 import S from './editor.styles';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker } from './date-picker/date-picker';
-import { createTask, getTask } from '@pages/todolist/content/api/get-set-tasks';
+import { createTask, editTask, getTask } from '@pages/todo/main/api/get-set-tasks';
 import { v4 as uuidv4 } from 'uuid';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
-export const Editor = ({ onClose }: { onClose: () => void }) => {
+export const Editor = () => {
   const priorities = [
     {
       priority: 'Low',
@@ -26,6 +26,8 @@ export const Editor = ({ onClose }: { onClose: () => void }) => {
     },
   ];
 
+  const navigate = useNavigate();
+
   const { id } = useParams<{ id: string }>();
 
   const { data } = useQuery('task', () => getTask(id as string), { enabled: !!id });
@@ -40,12 +42,16 @@ export const Editor = ({ onClose }: { onClose: () => void }) => {
       date: dayjs(),
       id: '',
     },
+    enableReinitialize: true,
     onSubmit: (v) => {
       const vals = { ...v, id: uuidv4(), date: v.date.toISOString() };
-      createTask(vals);
-      onClose();
+      if (id) {
+        editTask(id, vals);
+      } else {
+        createTask(vals);
+      }
+      navigate('/');
     },
-    enableReinitialize: true,
   });
 
   return (
@@ -80,7 +86,7 @@ export const Editor = ({ onClose }: { onClose: () => void }) => {
       </S.Textbox>
 
       <S.Add type="submit">{id ? 'Edytuj' : 'Dodaj zadanie'}</S.Add>
-      <S.Cancel type="button" onClick={onClose}>
+      <S.Cancel type="button" onClick={() => navigate('/')}>
         Anuluj
       </S.Cancel>
     </form>

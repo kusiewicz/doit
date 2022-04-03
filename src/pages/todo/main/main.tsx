@@ -1,13 +1,19 @@
-import S from './content.styles';
+import S from './main.styles';
 import { Bookmark } from './parts/bookmark/bookmark';
 import { IncomingIcon } from './parts/icons/incoming-icon/incoming-icon';
 import { TodayIcon } from './parts/icons/today-icon/today-icon';
 import { TommorowIcon } from './parts/icons/tommorow-icon/tommorow-icon';
-import { Tasks } from './parts/tasks/tasks';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ReactNode } from 'react';
+import { dateToWeekdayDayMonth } from '@utils/date-to-weekday-day-month';
 
-export const Content = () => {
+export const Main = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
+
+  const { tab } = useParams();
+  const isToday = tab === 'today';
+
+  const day = isToday ? 'Dziś' : 'Jutro';
 
   return (
     <>
@@ -25,7 +31,11 @@ export const Content = () => {
         </Bookmark>
       </S.Menu>
 
-      <Tasks />
+      <S.Content>
+        <S.Day>{day}</S.Day>
+        <S.Date>{dateToWeekdayDayMonth(day)}</S.Date>
+        {children}
+      </S.Content>
     </>
   );
 };

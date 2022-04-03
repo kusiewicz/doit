@@ -1,15 +1,16 @@
 import { Button } from '@parts/button/button';
+import { useNavigate } from 'react-router-dom';
 import S from './empty-state.styles';
 
-import { Mode } from '../tasks';
-
-export const EmptyState = ({ isToday, setMode }: { isToday?: boolean; setMode: Function }) => {
+export const EmptyState = ({ isToday }: { isToday?: boolean }) => {
   const EmptyIcon = () => {
     if (isToday) {
       return <S.EmptyTodayIcon />;
     }
     return <S.EmptyTommorowIcon />;
   };
+
+  const navigate = useNavigate();
 
   const Text = isToday ? 'Wszystko zrobione' : 'Zobacz, co masz zaplanowane na następne dni.';
 
@@ -22,7 +23,7 @@ export const EmptyState = ({ isToday, setMode }: { isToday?: boolean; setMode: F
       <EmptyIcon />
       <S.Text>{Text}</S.Text>
       <S.SubText>{SubText}</S.SubText>
-      <Button onClick={() => setMode(Mode.ADD)}>Dodaj zadanie</Button>
+      <Button onClick={() => navigate('/app/add')}>Dodaj zadanie</Button>
     </S.Wrapper>
   );
 };

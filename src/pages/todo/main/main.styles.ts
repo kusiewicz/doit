@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Menu = styled.div`
+  background-color: ${({ theme }) => theme.baseColors.lightGrey};
+  width: 300px;
+  padding-top: 30px;
+  padding-left: 35px;
+  min-height: calc(100% - 44px);
+`;
+
+const Content = styled.div`
   padding: 36px 55px;
   flex: 1;
   max-width: 900px;
@@ -23,4 +31,4 @@ const Date = styled.span`
   margin-bottom: ${({ theme }) => theme.spacing.large};
 `;
 
-export default { Wrapper, Day, Date };
+export default { Menu, Content, Day, Date };

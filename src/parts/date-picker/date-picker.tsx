@@ -43,7 +43,7 @@ export const DatePicker = ({
 
     setColor('buttonAnother');
     return;
-  }, [date]);
+  }, []);
 
   return (
     <S.Wrapper onClick={(e) => e.stopPropagation()}>
