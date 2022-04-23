@@ -32,20 +32,22 @@ export const Editor = () => {
 
   const { data } = useQuery('task', () => getTask(id as string), { enabled: !!id });
 
+  console.log(data);
+
   const { title, description, priority } = data ?? {};
 
   const { handleSubmit, getFieldProps, values, setFieldValue } = useFormik({
     initialValues: {
-      title: title || '',
-      description: description || '',
-      priority: priority || 'Low',
+      title: '',
+      description: '',
+      priority: 'Low',
       date: dayjs(),
-      id: '',
+      id: id || '',
     },
-    enableReinitialize: true,
     onSubmit: (v) => {
-      const vals = { ...v, id: uuidv4(), date: v.date.toISOString() };
+      const vals = { ...v, ...(!id && { id: uuidv4() }), date: v.date.toISOString() };
       if (id) {
+        console.log(vals);
         editTask(id, vals);
       } else {
         createTask(vals);
@@ -54,15 +56,26 @@ export const Editor = () => {
     },
   });
 
+  console.log(values.id);
+
   return (
     <form onSubmit={handleSubmit}>
       <S.Textbox>
-        <S.Title {...getFieldProps('title')} placeholder="np. Zorganizuj spotkanie na 11" />
-        <S.Description {...getFieldProps('description')} placeholder="Opis" />
+        <S.Title
+          placeholder="np. Zorganizuj spotkanie na 11"
+          {...getFieldProps('title')}
+          value={values?.title || title}
+        />
+        <S.Description
+          {...getFieldProps('description')}
+          placeholder="Opis"
+          value={values?.description || description}
+        />
         <DatePicker
           date={values.date}
           onChange={(v: Dayjs) => {
             setFieldValue('date', v);
+            console.log(v);
           }}
         />
         <S.Select
@@ -70,11 +83,11 @@ export const Editor = () => {
           optionLabelProp="icon"
           dropdownMatchSelectWidth={false}
           dropdownAlign={{ offset: [-125, 0] }}
-          value={values.priority}
           dropdownStyle={{
             width: '250px',
           }}
           onChange={(v) => setFieldValue('priority', v)}
+          value={values?.priority || priority}
         >
           {priorities.map((v) => (
             <S.Option key={v.title} value={v.priority} icon={<S.PriorityIcon color={v.color} />}>
