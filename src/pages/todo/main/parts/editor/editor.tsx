@@ -7,6 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
+const now = dayjs();
+
 export const Editor = () => {
   const priorities = [
     {
@@ -30,24 +32,26 @@ export const Editor = () => {
 
   const { id } = useParams<{ id: string }>();
 
-  const { data } = useQuery('task', () => getTask(id as string), { enabled: !!id });
+  const { data, isLoading } = useQuery('task', () => getTask(id as string), {
+    enabled: !!id,
+    cacheTime: 0,
+  });
 
-  console.log(data);
+  const { title, description, priority, date } = data ?? {};
 
-  const { title, description, priority } = data ?? {};
-
-  const { handleSubmit, getFieldProps, values, setFieldValue } = useFormik({
+  const { handleSubmit, getFieldProps, setFieldValue } = useFormik({
     initialValues: {
-      title: '',
-      description: '',
-      priority: 'Low',
-      date: dayjs(),
+      title: title || '',
+      description: description || '',
+      priority: priority || 'Low',
+      date: date || now,
       id: id || '',
     },
+    enableReinitialize: true,
     onSubmit: (v) => {
-      const vals = { ...v, ...(!id && { id: uuidv4() }), date: v.date.toISOString() };
+      console.log(v.date);
+      const vals = { ...v, ...(!id && { id: uuidv4() }), date: dayjs(v.date).toISOString() };
       if (id) {
-        console.log(vals);
         editTask(id, vals);
       } else {
         createTask(vals);
@@ -56,29 +60,19 @@ export const Editor = () => {
     },
   });
 
-  console.log(values.id);
-
-  return (
+  return !isLoading ? (
     <form onSubmit={handleSubmit}>
       <S.Textbox>
-        <S.Title
-          placeholder="np. Zorganizuj spotkanie na 11"
-          {...getFieldProps('title')}
-          value={values?.title || title}
-        />
-        <S.Description
-          {...getFieldProps('description')}
-          placeholder="Opis"
-          value={values?.description || description}
-        />
+        <S.Title placeholder="np. Zorganizuj spotkanie na 11" {...getFieldProps('title')} />
+        <S.Description {...getFieldProps('description')} placeholder="Opis" />
         <DatePicker
-          date={values.date}
+          date={dayjs(date)}
           onChange={(v: Dayjs) => {
             setFieldValue('date', v);
-            console.log(v);
           }}
         />
         <S.Select
+          {...getFieldProps('priority')}
           bordered={false}
           optionLabelProp="icon"
           dropdownMatchSelectWidth={false}
@@ -87,7 +81,6 @@ export const Editor = () => {
             width: '250px',
           }}
           onChange={(v) => setFieldValue('priority', v)}
-          value={values?.priority || priority}
         >
           {priorities.map((v) => (
             <S.Option key={v.title} value={v.priority} icon={<S.PriorityIcon color={v.color} />}>
@@ -99,9 +92,16 @@ export const Editor = () => {
       </S.Textbox>
 
       <S.Add type="submit">{id ? 'Edytuj' : 'Dodaj zadanie'}</S.Add>
-      <S.Cancel type="button" onClick={() => navigate('/')}>
+      <S.Cancel
+        type="button"
+        onClick={() => {
+          navigate('/');
+        }}
+      >
         Anuluj
       </S.Cancel>
     </form>
+  ) : (
+    <h1>loading</h1>
   );
 };

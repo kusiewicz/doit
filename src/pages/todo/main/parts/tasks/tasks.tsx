@@ -8,13 +8,13 @@ import { Add } from '../add-button/add-button';
 
 export const Tasks = () => {
   const navigate = useNavigate();
-  const { data, refetch } = useQuery('tasks', getTasks);
+  const { data, refetch } = useQuery('tasks', getTasks, { cacheTime: 0 });
 
   useEffect(() => {
     if (!data) {
       refetch();
     }
-  }, []);
+  }, [data, refetch]);
 
   return (
     <>

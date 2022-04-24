@@ -18,7 +18,7 @@ export const Task = ({
         <S.Title>{title}</S.Title>
         <S.Description>{description}</S.Description>
         <S.SmallDatePicker
-          date={dayjs(date.toLocaleString())}
+          date={dayjs(date)}
           onChange={(v: Dayjs) => {
             editTask(id, { date: v.toISOString() });
           }}

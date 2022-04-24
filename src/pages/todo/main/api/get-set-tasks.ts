@@ -6,17 +6,17 @@ import {
   getDoc,
   updateDoc,
   QueryDocumentSnapshot,
-  Timestamp,
 } from '@firebase/firestore';
 import { convertToArray } from '@utils/firebase-convert-to-array';
 import { db } from '@lib/firebase';
+import { Dayjs } from 'dayjs';
 
 export interface TaskData {
   title: string;
   description: string;
   priority: string;
   id: string;
-  date: Date | Timestamp;
+  date: Dayjs;
 }
 
 const taskConverter = {

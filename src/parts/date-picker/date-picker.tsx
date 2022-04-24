@@ -1,7 +1,7 @@
 import S from './date-picker.styles';
 import 'dayjs/locale/pl';
 import dayjs, { Dayjs } from 'dayjs';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import locale from 'antd/es/date-picker/locale/pl_PL';
 import isTomorrow from 'dayjs/plugin/isTomorrow';
 import isToday from 'dayjs/plugin/isToday';
@@ -22,28 +22,7 @@ export const DatePicker = ({
   icon?: ReactNode;
   className?: string;
 }) => {
-  const [color, setColor] = useState('buttonToday');
   const [date, setDate] = useState(incomingDate);
-
-  useEffect(() => {
-    if (date.isToday()) {
-      setColor('buttonToday');
-      return;
-    }
-
-    if (date.isTomorrow()) {
-      setColor('buttonTomorrow');
-      return;
-    }
-
-    if (date.diff(dayjs(), 'day') <= 6) {
-      setColor('buttonWeek');
-      return;
-    }
-
-    setColor('buttonAnother');
-    return;
-  }, []);
 
   return (
     <S.Wrapper onClick={(e) => e.stopPropagation()}>
@@ -58,7 +37,18 @@ export const DatePicker = ({
         defaultValue={dayjs(date)}
         allowClear={false}
         format={dateToDescriptiveDate}
-        color={color}
+        color={(() => {
+          if (date.isToday()) {
+            return 'buttonToday';
+          }
+          if (date.isTomorrow()) {
+            return 'buttonTomorrow';
+          }
+          if (date.diff(dayjs(), 'day') <= 6) {
+            return 'buttonWeek';
+          }
+          return 'buttonAnother';
+        })()}
         suffixIcon={icon}
         className={className}
         showToday={false}
