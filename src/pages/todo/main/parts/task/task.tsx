@@ -1,19 +1,26 @@
 import S from './task.styles';
 import dayjs, { Dayjs } from 'dayjs';
-import { editTask, TaskData } from '@pages/todo/main/api/get-set-tasks';
+import { editTask, TaskData, deleteTask } from '@pages/todo/main/api/tasks.actions';
 
 export const Task = ({
   data,
   onClick,
+  refetch,
 }: {
   data: TaskData;
   onClick: React.MouseEventHandler<HTMLDivElement>;
+  refetch: Function;
 }) => {
   const { id, title, description, date } = data;
 
   return (
     <S.Wrapper>
-      <S.Checkbox />
+      <S.Delete
+        onClick={() => {
+          deleteTask(id);
+          refetch();
+        }}
+      />
       <S.Task onClick={onClick}>
         <S.Title>{title}</S.Title>
         <S.Description>{description}</S.Description>

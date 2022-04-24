@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import S from './editor.styles';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker } from './date-picker/date-picker';
-import { createTask, editTask, getTask } from '@pages/todo/main/api/get-set-tasks';
+import { createTask, editTask, getTask } from '@pages/todo/main/api/tasks.actions';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -92,12 +92,7 @@ export const Editor = () => {
       </S.Textbox>
 
       <S.Add type="submit">{id ? 'Edytuj' : 'Dodaj zadanie'}</S.Add>
-      <S.Cancel
-        type="button"
-        onClick={() => {
-          navigate('/');
-        }}
-      >
+      <S.Cancel type="button" onClick={() => navigate('/')}>
         Anuluj
       </S.Cancel>
     </form>

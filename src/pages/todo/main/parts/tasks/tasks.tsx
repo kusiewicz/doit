@@ -1,4 +1,4 @@
-import { getTasks } from '@pages/todo/main/api/get-set-tasks';
+import { getTasks } from '@pages/todo/main/api/tasks.actions';
 import { useQuery } from 'react-query';
 import { EmptyState } from './empty-state/empty-state';
 import { useEffect } from 'react';
@@ -21,7 +21,12 @@ export const Tasks = () => {
       {data?.[0] ? (
         <>
           {data.map((task) => (
-            <Task onClick={() => navigate(`/app/task/${task.id}`)} data={task} key={task.id} />
+            <Task
+              onClick={() => navigate(`/app/task/${task.id}`)}
+              data={task}
+              key={task.id}
+              refetch={refetch}
+            />
           ))}
           <Add />
         </>

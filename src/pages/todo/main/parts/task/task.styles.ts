@@ -24,7 +24,7 @@ const Description = styled.p`
   color: ${({ theme }) => theme.colors.description};
 `;
 
-const Checkbox = styled(CheckboxBase)`
+const Delete = styled(CheckboxBase)`
   margin-top: 11px;
 `;
 
@@ -54,7 +54,7 @@ export default {
   Title,
   Task,
   Description,
-  Checkbox,
+  Delete,
   SmallDatePicker,
   CalendarIcon,
 };

@@ -5,6 +5,7 @@ import {
   setDoc,
   getDoc,
   updateDoc,
+  deleteDoc,
   QueryDocumentSnapshot,
 } from '@firebase/firestore';
 import { convertToArray } from '@utils/firebase-convert-to-array';
@@ -46,4 +47,8 @@ export const createTask = async (task: Omit<TaskData, 'date'> & { date: string }
 
 export const editTask = async (id: string, editedField: { [key: string]: Partial<unknown> }) => {
   await updateDoc(doc(db, 'tasks', id), editedField);
+};
+
+export const deleteTask = async (id: string) => {
+  await deleteDoc(doc(db, 'tasks', id));
 };
