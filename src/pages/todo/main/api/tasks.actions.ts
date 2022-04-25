@@ -12,12 +12,17 @@ import { convertToArray } from '@utils/firebase-convert-to-array';
 import { db } from '@lib/firebase';
 import { Dayjs } from 'dayjs';
 
+export enum Priorities {
+  LOW = 'Low',
+  MEDIUM = 'Medium',
+  HIGH = 'High',
+}
 export interface TaskData {
   title: string;
   description: string;
-  priority: string;
+  priority: Priorities;
   id: string;
-  date: Dayjs;
+  date: Dayjs | string;
 }
 
 const taskConverter = {

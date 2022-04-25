@@ -6,6 +6,7 @@ import { ReactComponent as CalendarIconBase } from '@assets/icons/small-calendar
 const Wrapper = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.taskBorder};
   display: flex;
+  cursor: pointer;
 `;
 
 const Task = styled.div`

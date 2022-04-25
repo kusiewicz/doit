@@ -6,7 +6,7 @@ import { ReactComponent as CheckmarkBase } from '@assets/icons/checkmark.svg';
 
 const Textbox = styled.div`
   width: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.baseColors.grey};
   padding: ${({ theme }) => theme.spacing.normal};
   position: relative;

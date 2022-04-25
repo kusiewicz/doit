@@ -7,10 +7,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ReactNode } from 'react';
 import { dateToWeekdayDayMonth } from '@utils/date-to-weekday-day-month';
 
+export enum Mode {
+  TODAY = 'today',
+  TOMORROW = 'tomorrow',
+  WEEK = 'upcoming',
+}
+
 export const Main = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
 
-  const { tab } = useParams();
+  const { tab } = useParams<{ tab: Mode }>();
   const isToday = tab === 'today';
 
   const day = isToday ? 'Dziś' : 'Jutro';

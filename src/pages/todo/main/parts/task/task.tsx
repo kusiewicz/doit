@@ -11,7 +11,7 @@ export const Task = ({
   onClick: React.MouseEventHandler<HTMLDivElement>;
   refetch: Function;
 }) => {
-  const { id, title, description, date } = data;
+  const { id, title, description, date, priority } = data;
 
   return (
     <S.Wrapper>
@@ -20,6 +20,7 @@ export const Task = ({
           deleteTask(id);
           refetch();
         }}
+        priority={priority}
       />
       <S.Task onClick={onClick}>
         <S.Title>{title}</S.Title>

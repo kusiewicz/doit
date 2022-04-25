@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import S from './editor.styles';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker } from './date-picker/date-picker';
-import { createTask, editTask, getTask } from '@pages/todo/main/api/tasks.actions';
+import { createTask, editTask, getTask, Priorities } from '@pages/todo/main/api/tasks.actions';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -10,19 +10,19 @@ import { useQuery } from 'react-query';
 const now = dayjs();
 
 export const Editor = () => {
-  const priorities = [
+  const priorities: { priority: Priorities; color: string; title: string }[] = [
     {
-      priority: 'Low',
+      priority: Priorities.LOW,
       color: 'lowPriority',
       title: 'Priorytet 1',
     },
     {
-      priority: 'Medium',
+      priority: Priorities.MEDIUM,
       color: 'mediumPriority',
       title: 'Priorytet 2',
     },
     {
-      priority: 'High',
+      priority: Priorities.HIGH,
       color: 'highPriority',
       title: 'Priorytet 3',
     },
@@ -43,7 +43,7 @@ export const Editor = () => {
     initialValues: {
       title: title || '',
       description: description || '',
-      priority: priority || 'Low',
+      priority: (priority as Priorities) || 'Low',
       date: date || now,
       id: id || '',
     },
