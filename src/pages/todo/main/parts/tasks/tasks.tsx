@@ -50,7 +50,7 @@ export const Tasks = () => {
           <Add />
         </>
       ) : (
-        <EmptyState />
+        <EmptyState tab={tab} />
       )}
     </>
   );

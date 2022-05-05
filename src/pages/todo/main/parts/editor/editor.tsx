@@ -39,7 +39,7 @@ export const Editor = () => {
 
   const { title, description, priority, date } = data ?? {};
 
-  const { handleSubmit, getFieldProps, setFieldValue } = useFormik({
+  const { handleSubmit, getFieldProps, setFieldValue, values } = useFormik({
     initialValues: {
       title: title || '',
       description: description || '',
@@ -61,41 +61,46 @@ export const Editor = () => {
   });
 
   return !isLoading ? (
-    <form onSubmit={handleSubmit}>
-      <S.Textbox>
-        <S.Title placeholder="np. Zorganizuj spotkanie na 11" {...getFieldProps('title')} />
-        <S.Description {...getFieldProps('description')} placeholder="Opis" />
-        <DatePicker
-          date={dayjs(date)}
-          onChange={(v: Dayjs) => {
-            setFieldValue('date', v);
-          }}
-        />
-        <S.Select
-          {...getFieldProps('priority')}
-          bordered={false}
-          optionLabelProp="icon"
-          dropdownMatchSelectWidth={false}
-          dropdownAlign={{ offset: [-125, 0] }}
-          dropdownStyle={{
-            width: '250px',
-          }}
-          onChange={(v) => setFieldValue('priority', v)}
-        >
-          {priorities.map((v) => (
-            <S.Option key={v.title} value={v.priority} icon={<S.PriorityIcon color={v.color} />}>
-              <S.PriorityIcon color={v.color} />
-              <S.Priority>{v.title}</S.Priority>
-            </S.Option>
-          ))}
-        </S.Select>
-      </S.Textbox>
+    <>
+      <S.Header>{id ? 'Edytuj zadanie' : 'Dodaj zadanie'}</S.Header>
+      <form onSubmit={handleSubmit}>
+        <S.Textbox>
+          <S.Title placeholder="np. Zorganizuj spotkanie na 11" {...getFieldProps('title')} />
+          <S.Description {...getFieldProps('description')} placeholder="Opis" />
+          <DatePicker
+            date={dayjs(date)}
+            onChange={(v: Dayjs) => {
+              setFieldValue('date', v);
+            }}
+          />
+          <S.Select
+            {...getFieldProps('priority')}
+            bordered={false}
+            optionLabelProp="icon"
+            dropdownMatchSelectWidth={false}
+            dropdownAlign={{ offset: [-125, 0] }}
+            dropdownStyle={{
+              width: '250px',
+            }}
+            onChange={(v) => setFieldValue('priority', v)}
+          >
+            {priorities.map((v) => (
+              <S.Option key={v.title} value={v.priority} icon={<S.PriorityIcon color={v.color} />}>
+                <S.PriorityIcon color={v.color} />
+                <S.Priority>{v.title}</S.Priority>
+              </S.Option>
+            ))}
+          </S.Select>
+        </S.Textbox>
 
-      <S.Add type="submit">{id ? 'Edytuj' : 'Dodaj zadanie'}</S.Add>
-      <S.Cancel type="button" onClick={() => navigate('/')}>
-        Anuluj
-      </S.Cancel>
-    </form>
+        <S.Add disabled={!values.title && !values.description} type="submit">
+          {id ? 'Edytuj' : 'Dodaj zadanie'}
+        </S.Add>
+        <S.Cancel type="button" onClick={() => navigate('/')}>
+          Anuluj
+        </S.Cancel>
+      </form>
+    </>
   ) : (
     <h1>loading</h1>
   );

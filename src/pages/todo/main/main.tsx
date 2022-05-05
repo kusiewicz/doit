@@ -21,6 +21,26 @@ export const Main = ({ children }: { children: ReactNode }) => {
 
   const day = isToday ? 'Dziś' : 'Jutro';
 
+  const getDescription = () => {
+    // switch (tab) {
+    //   case Mode.TODAY:
+    //     return 'Dziś';
+    //   case Mode.TOMORROW:
+    //     return 'Jutro';
+    //   case Mode.WEEK:
+    //     return 'Nadchodzące';
+    // }
+    if (tab === Mode.TODAY) {
+      return 'Dziś';
+    }
+    if (tab === Mode.TOMORROW) {
+      return 'Jutro';
+    }
+    if (tab === Mode.WEEK) {
+      return 'Nadchodzące';
+    }
+  };
+
   return (
     <>
       <S.Menu>
@@ -38,8 +58,8 @@ export const Main = ({ children }: { children: ReactNode }) => {
       </S.Menu>
 
       <S.Content>
-        <S.Day>{day}</S.Day>
-        <S.Date>{dateToWeekdayDayMonth(day)}</S.Date>
+        <S.Day>{getDescription()}</S.Day>
+        {tab && <S.Date>{dateToWeekdayDayMonth(day)}</S.Date>}
         {children}
       </S.Content>
     </>

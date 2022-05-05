@@ -17,6 +17,13 @@ const Textbox = styled.div`
   }
 `;
 
+const Header = styled.span`
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-size: ${({ theme }) => theme.fontSize.xlarge};
+  display: inline-block;
+  margin-bottom: ${({ theme }) => theme.spacing.small};
+`;
+
 const Title = styled.textarea`
   height: 21px;
   font-size: ${({ theme }) => theme.fontSize.small};
@@ -40,10 +47,15 @@ const Description = styled(Title)`
   font-weight: ${({ theme }) => theme.fontWeight.light};
 `;
 
-const Add = styled(ButtonBase)`
-  font-weight: ${({ theme }) => theme.fontWeight.normal};
+const Add = styled(ButtonBase)<{ disabled: boolean }>`
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
   margin-right: ${({ theme }) => theme.spacing.normal};
   margin-top: ${({ theme }) => theme.spacing.normal};
+
+  :disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
 const Cancel = styled(ButtonBase)`
@@ -86,7 +98,6 @@ const Priority = styled.span`
   margin-left: ${({ theme }) => theme.spacing.large};
 `;
 
-// will be needed
 const Checkmark = styled(CheckmarkBase)``;
 
 export default {
@@ -100,4 +111,5 @@ export default {
   Option,
   PriorityIcon,
   Priority,
+  Header,
 };

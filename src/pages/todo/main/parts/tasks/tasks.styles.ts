@@ -13,7 +13,6 @@ const Date = styled.span`
   display: inline-block;
   font-weight: ${({ theme }) => theme.fontWeight.light};
   text-transform: capitalize;
-  margin-bottom: ${({ theme }) => theme.spacing.large};
 `;
 
 export default { Day, Date };

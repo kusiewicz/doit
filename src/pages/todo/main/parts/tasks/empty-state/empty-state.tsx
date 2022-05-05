@@ -1,8 +1,11 @@
+import { Mode } from '@pages/todo/main/main';
 import { Button } from '@parts/button/button';
 import { useNavigate } from 'react-router-dom';
 import S from './empty-state.styles';
 
-export const EmptyState = ({ isToday }: { isToday?: boolean }) => {
+export const EmptyState = ({ tab }: { tab?: string }) => {
+  const isToday = tab === Mode.TODAY;
+
   const EmptyIcon = () => {
     if (isToday) {
       return <S.EmptyTodayIcon />;
@@ -16,7 +19,7 @@ export const EmptyState = ({ isToday }: { isToday?: boolean }) => {
 
   const SubText = isToday
     ? 'Wygląda na to, że wszystko jest zorganizowane tak jak powinno.'
-    : 'Wszystkie zadania do wykonania jutro będą tu widoczne';
+    : 'Wszystkie zadania do wykonania będą tu widoczne';
 
   return (
     <S.Wrapper>

@@ -4,7 +4,6 @@ import { ReactComponent as EmptyTommorow } from '@assets/images/empty-tommorow.s
 
 const Wrapper = styled.div`
   text-align: center;
-  margin-top: 40px;
   max-width: 360px;
   margin: auto;
 `;
@@ -24,11 +23,13 @@ const SubText = styled.p`
 const EmptyTodayIcon = styled(EmptyToday)`
   height: 200px;
   width: 220px;
+  margin-top: 75px;
 `;
 
 const EmptyTommorowIcon = styled(EmptyTommorow)`
   height: 200px;
   width: 220px;
+  margin-top: 75px;
 `;
 
 export default { Wrapper, Text, SubText, EmptyTodayIcon, EmptyTommorowIcon };
