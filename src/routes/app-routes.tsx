@@ -2,6 +2,7 @@ import { Todo } from '@pages/todo/todo';
 import { Editor } from '@pages/todo/main/parts/editor/editor';
 import { Tasks } from '@pages/todo/main/parts/tasks/tasks';
 import { Routes, Route, Navigate } from 'react-router';
+import { Auth } from '@pages/auth/auth';
 
 export const AppRoutes = () => (
   <Routes>
@@ -11,5 +12,6 @@ export const AppRoutes = () => (
       <Route path="task/:id" element={<Editor />} />
       <Route path="add" element={<Editor />} />
     </Route>
+    <Route path="/auth" element={<Auth />} />
   </Routes>
 );

@@ -22,14 +22,6 @@ export const Main = ({ children }: { children: ReactNode }) => {
   const day = isToday ? 'Dziś' : 'Jutro';
 
   const getDescription = () => {
-    // switch (tab) {
-    //   case Mode.TODAY:
-    //     return 'Dziś';
-    //   case Mode.TOMORROW:
-    //     return 'Jutro';
-    //   case Mode.WEEK:
-    //     return 'Nadchodzące';
-    // }
     if (tab === Mode.TODAY) {
       return 'Dziś';
     }

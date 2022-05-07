@@ -20,7 +20,13 @@ type Colors =
   | 'hoveredPicker'
   | 'description'
   | 'taskBorder'
-  | 'checkbox';
+  | 'checkbox'
+  | 'logo'
+  | 'authBackground'
+  | 'authBorder'
+  | 'registerBtn'
+  | 'registerBtnHover'
+  | 'dividerTextColor';
 
 type BaseColors =
   | 'white'
@@ -37,7 +43,9 @@ type BaseColors =
   | 'orange'
   | 'ashGrey'
   | 'rust'
-  | 'priorityRed';
+  | 'priorityRed'
+  | 'darkRed'
+  | 'mediumGrey';
 
 type Device = 'mobile' | 'desktop' | 'tablet';
 
@@ -55,14 +63,16 @@ interface Theme {
 const baseColors: { [key in BaseColors]: string } = {
   black: '#000',
   white: '#FFF',
-  offWhite: '#F0F0F0',
+  offWhite: '#f2f6f7',
   lightGrey: '#FAFAFA',
+  mediumGrey: '#E3E7E8',
   basicGrey: 'grey',
   orange: '#EB8909',
   rust: '#AD6200',
   grey: '#CCCCCC',
   ashGrey: '#A8A5A4',
   darkGrey: '#808080',
+  darkRed: '#E44332',
   red: '#DB4C3F',
   priorityRed: '#D1493B',
   lightGreen: '#058236',
@@ -83,6 +93,12 @@ const colors: { [key in Colors]: string } = {
   description: baseColors.ashGrey,
   taskBorder: baseColors.offWhite,
   checkbox: baseColors.basicGrey,
+  logo: baseColors.darkRed,
+  authBackground: baseColors.lightGrey,
+  authBorder: baseColors.grey,
+  registerBtn: baseColors.offWhite,
+  registerBtnHover: baseColors.mediumGrey,
+  dividerTextColor: baseColors.ashGrey,
 };
 
 const device: { [key in Device]: string } = {
