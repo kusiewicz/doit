@@ -31,6 +31,7 @@ const Divider = styled.div`
   text-align: center;
   background-color: white;
   margin-top: ${({ theme }) => theme.spacing.xlarge};
+  margin-bottom: ${({ theme }) => theme.spacing.large};
 
   span {
     position: relative;
