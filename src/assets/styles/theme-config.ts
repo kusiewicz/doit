@@ -28,7 +28,9 @@ type Colors =
   | 'socialBtnHover'
   | 'dividerTextColor'
   | 'submitBtn'
-  | 'submitBtnHover';
+  | 'submitBtnHover'
+  | 'authText'
+  | 'authSwitch';
 
 type BaseColors =
   | 'white'
@@ -48,7 +50,8 @@ type BaseColors =
   | 'priorityRed'
   | 'darkRed'
   | 'mediumGrey'
-  | 'hoverRed';
+  | 'hoverRed'
+  | 'dustGrey';
 
 type Device = 'mobile' | 'desktop' | 'tablet';
 
@@ -75,6 +78,7 @@ const baseColors: { [key in BaseColors]: string } = {
   grey: '#CCCCCC',
   ashGrey: '#A8A5A4',
   darkGrey: '#808080',
+  dustGrey: '#6C777A',
   darkRed: '#E44332',
   red: '#DB4C3F',
   priorityRed: '#D1493B',
@@ -105,6 +109,8 @@ const colors: { [key in Colors]: string } = {
   dividerTextColor: baseColors.ashGrey,
   submitBtn: baseColors.red,
   submitBtnHover: baseColors.hoverRed,
+  authText: baseColors.dustGrey,
+  authSwitch: baseColors.red,
 };
 
 const device: { [key in Device]: string } = {
