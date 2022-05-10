@@ -8,9 +8,10 @@ const Wrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     width: 100%;
+    height: 100vh;
   }
 
-  @media (min-width: ${({ theme }) => theme.device.tablet}) {
+  @media (min-width: ${({ theme }) => theme.device.mobile}) {
     min-width: 450px;
   }
 `;
