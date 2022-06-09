@@ -6,7 +6,7 @@ import { ReactComponent as Github } from '@assets/icons/github.svg';
 import { Outlet } from 'react-router-dom';
 import { SocialButton } from './parts/social-button/social-button';
 
-export const Auth = () => {
+export const AuthPage = () => {
   return (
     <S.Wrapper>
       <S.Form>

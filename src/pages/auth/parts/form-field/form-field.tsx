@@ -8,17 +8,22 @@ export const FormField = ({
   name,
   onBlur,
   type,
+  error,
+  touched,
 }: {
   label: string;
   inputProps?: FieldInputProps<string>;
   name?: string;
-  onBlur?: () => void;
+  onBlur?: React.FocusEventHandler;
   type?: HTMLInputTypeAttribute;
+  error?: string;
+  touched?: boolean;
 }) => {
   return (
     <S.Wrapper>
       <S.Label htmlFor={name}>{label}</S.Label>
       <S.Input id={name} {...inputProps} onBlur={onBlur} type={type} />
+      {error && touched && <S.Error>{error}</S.Error>}
     </S.Wrapper>
   );
 };

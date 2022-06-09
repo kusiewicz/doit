@@ -1,4 +1,3 @@
-// import { Divider } from 'antd';
 import { Divider } from 'antd';
 import { useFormik } from 'formik';
 import { useState } from 'react';
@@ -34,16 +33,20 @@ export const Login = () => {
         onBlur={() => console.log(values)}
         type="password"
       />
-      <Submit title="Log in" />
+      <Submit title="Log in" onClick={() => {}} />
       <S.KeepLogged onClick={() => setKeepLogged((v) => !v)}>
         <S.Checkbox type="checkbox" checked={keepLogged} />
         <S.Text>Keep me logged in</S.Text>
       </S.KeepLogged>
-      <Link color="Grey">Forgot your password?</Link>
+      <Link to="" color="Grey">
+        Forgot your password?
+      </Link>
       <Divider />
       <S.Footer>
         <S.Text>Don't have an account?</S.Text>
-        <Link color="Red">Sign up</Link>
+        <Link to="/auth/register" color="Red">
+          Sign up
+        </Link>
       </S.Footer>
     </form>
   );

@@ -30,7 +30,8 @@ type Colors =
   | 'submitBtn'
   | 'submitBtnHover'
   | 'authText'
-  | 'authSwitch';
+  | 'authSwitch'
+  | 'error';
 
 type BaseColors =
   | 'white'
@@ -111,6 +112,7 @@ const colors: { [key in Colors]: string } = {
   submitBtnHover: baseColors.hoverRed,
   authText: baseColors.dustGrey,
   authSwitch: baseColors.red,
+  error: baseColors.red,
 };
 
 const device: { [key in Device]: string } = {

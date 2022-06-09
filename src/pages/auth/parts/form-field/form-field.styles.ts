@@ -21,4 +21,12 @@ const Input = styled.input`
   height: 30px;
 `;
 
-export default { Wrapper, Label, Input };
+const Error = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.xxsmall};
+  font-weight: ${({ theme }) => theme.fontWeight.light};
+  color: ${({ theme }) => theme.colors.error};
+  font-style: italic;
+  margin-top: 3px;
+`;
+
+export default { Wrapper, Label, Input, Error };

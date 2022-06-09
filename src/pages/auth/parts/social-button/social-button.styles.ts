@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const Title = styled.span`
   font-size: ${({ theme }) => theme.fontSize.small};
-  /* font-weight: ${({ theme }) => theme.fontWeight.normal}; */
   font-weight: 500;
   text-align: center;
   width: 100%;
