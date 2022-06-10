@@ -1,5 +1,5 @@
 import { Logo } from '@parts/logo/logo';
-import S from './auth.styles';
+import S from './auth-page.styles';
 import { ReactComponent as Facebook } from '@assets/icons/facebook.svg';
 import { ReactComponent as Google } from '@assets/icons/google.svg';
 import { ReactComponent as Github } from '@assets/icons/github.svg';

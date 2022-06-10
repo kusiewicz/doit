@@ -8,6 +8,7 @@ import { getAuth, createUserWithEmailAndPassword, Auth } from 'firebase/auth';
 import { useMutation } from 'react-query';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { LoadingPage } from '@pages/loading/loading-page';
 
 const initAuth = getAuth();
 
@@ -26,7 +27,7 @@ export const Register = () => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const { mutate } = useMutation(signIn, {
+  const { mutate, isLoading } = useMutation(signIn, {
     onSuccess: () => {
       navigate('/app/today');
     },
@@ -64,6 +65,10 @@ export const Register = () => {
       mutate({ auth: initAuth, email: values.email, password: values.password });
     },
   });
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <form>

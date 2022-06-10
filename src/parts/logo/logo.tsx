@@ -1,4 +1,3 @@
-import React from 'react';
 import S from './logo.styles';
 
 export const Logo = () => (
