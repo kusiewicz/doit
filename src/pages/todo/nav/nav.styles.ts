@@ -18,4 +18,11 @@ const Text = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.light};
 `;
 
-export default { Wrapper, Text };
+const Logout = styled.div`
+  color: ${({ theme }) => theme.baseColors.red};
+  background-color: ${({ theme }) => theme.baseColors.white};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  margin-left: 20px;
+`;
+
+export default { Wrapper, Text, Logout };

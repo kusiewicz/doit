@@ -4,13 +4,13 @@ import { FormField } from '../form-field/form-field';
 import { Link } from '../link/link';
 import { Submit } from '../submit-button/submit-button';
 import S from './register.styles';
-import { getAuth, createUserWithEmailAndPassword, Auth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, Auth, updateProfile } from 'firebase/auth';
 import { useMutation } from 'react-query';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { LoadingPage } from '@pages/loading/loading-page';
-
-const initAuth = getAuth();
+import { auth as initAuth } from '@lib/firebase';
+import { useRef } from 'react';
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -27,9 +27,18 @@ export const Register = () => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const nameRef = useRef<HTMLInputElement>(null);
+  const username = nameRef.current?.value;
+
   const { mutate, isLoading } = useMutation(signIn, {
     onSuccess: () => {
       navigate('/app/today');
+
+      if (initAuth.currentUser) {
+        updateProfile(initAuth.currentUser, {
+          displayName: username,
+        }).catch((err) => console.log(err));
+      }
     },
   });
 
@@ -78,6 +87,7 @@ export const Register = () => {
         inputProps={getFieldProps('name')}
         error={errors.name}
         onBlur={handleBlur}
+        inputRef={nameRef}
       />
       <FormField
         label="Email"

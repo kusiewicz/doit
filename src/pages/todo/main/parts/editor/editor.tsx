@@ -49,7 +49,6 @@ export const Editor = () => {
     },
     enableReinitialize: true,
     onSubmit: (v) => {
-      console.log(v.date);
       const vals = { ...v, ...(!id && { id: uuidv4() }), date: dayjs(v.date).toISOString() };
       if (id) {
         editTask(id, vals);
