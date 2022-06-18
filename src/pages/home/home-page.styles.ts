@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Logo as LogoBase } from '@parts/logo/logo';
 import { Submit as SubmitButtonBase } from '@pages/auth/parts/submit-button/submit-button';
+import { ReactComponent as ImageBase } from '@assets/images/home.svg';
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -10,6 +11,10 @@ const Wrapper = styled.div`
   align-items: center;
   margin: auto;
   position: relative;
+
+  @media (max-width: ${({ theme }) => theme.deviceBreakpoint.desktop}) {
+    padding: ${({ theme }) => theme.spacing.small};
+  }
 `;
 
 const Buttons = styled.div``;
@@ -17,10 +22,11 @@ const Buttons = styled.div``;
 const Nav = styled.div`
   position: absolute;
   top: 10px;
-  left: 0;
-  width: 100%;
+  left: 10px;
+  right: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   button {
     margin-top: 0;
@@ -55,12 +61,21 @@ const Header = styled.h1`
   line-height: 64px;
   margin-bottom: ${({ theme }) => theme.spacing.large};
   color: ${({ theme }) => theme.colors.almostBlack};
+
+  @media (max-width: ${({ theme }) => theme.deviceBreakpoint.mobile}) {
+    font-size: 40px;
+    line-height: 48px;
+  }
 `;
 
 const Text = styled.h2`
   font-size: 22px;
   color: ${({ theme }) => theme.colors.almostBlack};
   font-weight: ${({ theme }) => theme.fontWeight.light};
+
+  @media (max-width: ${({ theme }) => theme.deviceBreakpoint.mobile}) {
+    font-size: 18px;
+  }
 `;
 
 const Submit = styled(SubmitButtonBase)`
@@ -85,4 +100,6 @@ const Login = styled(Submit)`
   }
 `;
 
-export default { Wrapper, Nav, Logo, Content, Header, Text, Submit, Login, Buttons };
+const Image = styled(ImageBase)``;
+
+export default { Wrapper, Nav, Logo, Content, Header, Text, Submit, Login, Buttons, Image };

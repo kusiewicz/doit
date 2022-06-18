@@ -14,12 +14,12 @@ const Form = styled.div`
   border-radius: 10px;
   background-color: white;
 
-  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+  @media (max-width: ${({ theme }) => theme.deviceBreakpoint.mobile}) {
     width: 100%;
     height: 100vh;
   }
 
-  @media (min-width: ${({ theme }) => theme.device.mobile}) {
+  @media (min-width: ${({ theme }) => theme.deviceBreakpoint.mobile}) {
     min-width: 450px;
   }
 `;

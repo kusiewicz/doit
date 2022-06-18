@@ -86,7 +86,7 @@ interface Theme {
   fontWeight: { [key in FontWeight]: string };
   baseColors: { [key in BaseColors]: string };
   colors: { [key in Colors]: string };
-  device: { [key in Device]: string };
+  deviceBreakpoint: { [key in Device]: string };
   spacing: { [key in Spacing]: string };
 }
 
@@ -104,10 +104,10 @@ const baseColors: { [key in BaseColors]: string } = {
   Grey600: '#6C777A',
   Grey500: '#808080',
   Grey700: '#575757',
-  Red100: '#DB4C3F',
+  Red100: '#FD891C',
   Red200: '#D1493B',
   Red300: '#E44232',
-  Red400: '#C53727',
+  Red400: '#E36F02',
   Orange100: '#EB8909',
   Orange200: '#AD6200',
   Green100: '#058236',
@@ -128,7 +128,7 @@ const colors: { [key in Colors]: string } = {
   description: baseColors.Grey400,
   taskBorder: baseColors.White200,
   checkbox: baseColors.Grey200,
-  logo: baseColors.Red300,
+  logo: baseColors.Red100,
   authBackground: baseColors.White300,
   authBorder: baseColors.Grey300,
   socialBtn: baseColors.White200,
@@ -161,7 +161,7 @@ const colors: { [key in Colors]: string } = {
   pickerBorder: baseColors.Grey300,
 };
 
-const device: { [key in Device]: string } = {
+const deviceBreakpoint: { [key in Device]: string } = {
   mobile: `${MOBILE_DEVICE_BREAKPOINT}px`,
   tablet: `${TABLET_DEVICE_BREAKPOINT}px`,
   desktop: `${DESKTOP_DEVICE_BREAKPOINT}px`,
@@ -193,6 +193,6 @@ export const theme: Theme = {
   },
   baseColors,
   colors,
-  device,
+  deviceBreakpoint,
   spacing,
 };

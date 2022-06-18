@@ -21,15 +21,13 @@ const SubText = styled.p`
 `;
 
 const EmptyTodayIcon = styled(EmptyToday)`
-  height: 200px;
-  width: 220px;
-  margin-top: 75px;
+  height: 300px;
+  width: 320px;
 `;
 
 const EmptyTommorowIcon = styled(EmptyTommorow)`
-  height: 200px;
-  width: 220px;
-  margin-top: 75px;
+  height: 300px;
+  width: 320px;
 `;
 
 export default { Wrapper, Text, SubText, EmptyTodayIcon, EmptyTommorowIcon };

@@ -14,7 +14,7 @@ export const Nav = () => {
       <S.Logout
         onClick={() => {
           signOut(auth);
-          navigate('/auth/login');
+          navigate('/home');
         }}
       >
         Sign out
