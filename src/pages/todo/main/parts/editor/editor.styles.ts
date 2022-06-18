@@ -7,7 +7,7 @@ import { ReactComponent as CheckmarkBase } from '@assets/icons/checkmark.svg';
 const Textbox = styled.div`
   width: 100%;
   border-radius: 10px;
-  border: 1px solid ${({ theme }) => theme.baseColors.grey};
+  border: 1px solid ${({ theme }) => theme.colors.editorBorder};
   padding: ${({ theme }) => theme.spacing.normal};
   position: relative;
   box-sizing: content-box;
@@ -60,9 +60,9 @@ const Add = styled(ButtonBase)<{ disabled: boolean }>`
 
 const Cancel = styled(ButtonBase)`
   font-weight: ${({ theme }) => theme.fontWeight.normal};
-  color: ${({ theme }) => theme.baseColors.black};
-  background-color: ${({ theme }) => theme.baseColors.white};
-  border: 1px solid ${({ theme }) => theme.baseColors.grey};
+  color: ${({ theme }) => theme.colors.editorCancelText};
+  background-color: ${({ theme }) => theme.colors.editorCancelBackground};
+  border: 1px solid ${({ theme }) => theme.colors.editorBorder};
   text-align: center;
   width: 65px;
   margin-top: ${({ theme }) => theme.spacing.normal};

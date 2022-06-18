@@ -14,9 +14,9 @@ const AppIcon = styled(AppIconBase)`
 
 const Title = styled.span`
   font-family: Lato;
-  font-size: 20px;
+  font-size: 26px;
   margin-left: ${({ theme }) => theme.spacing.small};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
   color: ${({ theme }) => theme.colors.logo};
   letter-spacing: 0.2px;
 `;

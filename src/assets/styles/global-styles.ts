@@ -21,12 +21,12 @@ export const GlobalStyle = createGlobalStyle<{ theme: any }>`
     .ant-picker-cell-in-view {
         &.ant-picker-cell-selected {
             .ant-picker-cell-inner {
-                background: ${({ theme }) => theme.baseColors.red};
+                background: ${({ theme }) => theme.colors.pickerTheme};
             }
         }
         &.ant-picker-cell-today {
             .ant-picker-cell-inner::before {
-                border: 1px solid ${({ theme }) => theme.baseColors.red};
+                border: 1px solid ${({ theme }) => theme.colors.pickerTheme};
                 border-radius: 50px;
             }
         }
@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: any }>`
 
     .ant-picker-header-view {
         button:hover {
-            color: ${({ theme }) => theme.baseColors.red};
+            color: ${({ theme }) => theme.colors.pickerTheme};
         }
     }
 

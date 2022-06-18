@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as PlusIcon } from '@assets/icons/plus.svg';
 
 const Plus = styled(PlusIcon)`
-  color: ${({ theme }) => theme.baseColors.red};
+  color: ${({ theme }) => theme.colors.addTaskBtn};
   margin: auto;
 `;
 
@@ -20,16 +20,17 @@ const PlusHover = styled.div`
 
 const Add = styled.div`
   font-size: ${({ theme }) => theme.fontSize.small};
-  color: ${({ theme }) => theme.baseColors.darkGrey};
+  color: ${({ theme }) => theme.colors.addTaskText};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   cursor: pointer;
-  padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.normal};
+  padding: ${({ theme }) => theme.spacing.small};
+  ${({ theme }) => theme.spacing.normal};
 
   &:hover {
-    color: ${({ theme }) => theme.baseColors.red};
+    color: ${({ theme }) => theme.colors.addTaskBtn};
 
     ${PlusHover} {
-      background-color: ${({ theme }) => theme.baseColors.red};
+      background-color: ${({ theme }) => theme.colors.addTaskBtn};
     }
 
     ${Plus} {

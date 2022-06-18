@@ -2,9 +2,11 @@ import S from './nav.styles';
 import { useUserInfo } from '@lib/use-user-info';
 import { signOut } from 'firebase/auth';
 import { auth } from '@lib/firebase';
+import { useNavigate } from 'react-router-dom';
 
 export const Nav = () => {
   const { name } = useUserInfo();
+  const navigate = useNavigate();
 
   return (
     <S.Wrapper>
@@ -12,6 +14,7 @@ export const Nav = () => {
       <S.Logout
         onClick={() => {
           signOut(auth);
+          navigate('/auth/login');
         }}
       >
         Sign out

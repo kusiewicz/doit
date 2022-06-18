@@ -4,14 +4,14 @@ import { GeneratePicker as DatePickerBase } from '@utils/generate-picker';
 const DatePicker = styled(DatePickerBase)<{ color: string }>`
   border-radius: 5px;
   padding: 1px 0;
-  border: 1px solid ${({ theme }) => theme.baseColors.grey};
   width: fit-content;
   position: relative;
   cursor: pointer;
 
-  &:hover {
-    border-color: ${({ theme }) => theme.baseColors.grey};
+  &:hover,
+  &:active {
     background: ${({ theme }) => theme.colors.hoveredPicker};
+    border: 1px solid ${({ theme }) => theme.colors.pickerBorder};
   }
 
   .ant-picker-input {

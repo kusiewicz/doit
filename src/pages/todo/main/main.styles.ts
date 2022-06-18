@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Menu = styled.div`
-  background-color: ${({ theme }) => theme.baseColors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.menuBackground};
   width: 300px;
   padding-top: 30px;
   padding-left: 35px;
@@ -24,7 +24,7 @@ const Day = styled.span`
 
 const Date = styled.span`
   font-size: ${({ theme }) => theme.fontSize.xsmall};
-  color: ${({ theme }) => theme.baseColors.darkGrey};
+  color: ${({ theme }) => theme.colors.dateText};
   display: inline-block;
   font-weight: ${({ theme }) => theme.fontWeight.light};
   text-transform: capitalize;

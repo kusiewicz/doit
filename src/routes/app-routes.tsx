@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from 'react-router';
 import { AuthPage } from '@pages/auth/auth-page';
 import { Register } from '@pages/auth/parts/register/register';
 import { Login } from '@pages/auth/parts/login/login';
+import { HomePage } from '@pages/home/home-page';
 
 export const AppRoutes = () => (
   <Routes>
@@ -18,5 +19,6 @@ export const AppRoutes = () => (
       <Route path="register" element={<Register />} />
       <Route path="login" element={<Login />} />
     </Route>
+    <Route path="/home" element={<HomePage />} />
   </Routes>
 );

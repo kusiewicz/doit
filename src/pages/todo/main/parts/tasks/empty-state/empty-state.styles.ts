@@ -16,7 +16,7 @@ const Text = styled.p`
 
 const SubText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.small};
-  color: ${({ theme }) => theme.baseColors.darkGrey};
+  color: ${({ theme }) => theme.colors.emptyStateText};
   font-weight: ${({ theme }) => theme.fontWeight.light};
 `;
 

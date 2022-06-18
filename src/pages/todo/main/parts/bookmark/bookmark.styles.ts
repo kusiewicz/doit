@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   border-radius: 6px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.baseColors.grey};
+    background-color: ${({ theme }) => theme.colors.bookmarkHover};
   }
 `;
 

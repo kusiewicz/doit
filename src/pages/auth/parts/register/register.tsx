@@ -4,16 +4,31 @@ import { FormField } from '../form-field/form-field';
 import { Link } from '../link/link';
 import { Submit } from '../submit-button/submit-button';
 import S from './register.styles';
-import { createUserWithEmailAndPassword, Auth, updateProfile } from 'firebase/auth';
-import { useMutation } from 'react-query';
+import { Auth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { LoadingPage } from '@pages/loading/loading-page';
 import { auth as initAuth } from '@lib/firebase';
 import { useRef } from 'react';
+import { useMutation } from 'react-query';
 
 export const Register = () => {
   const navigate = useNavigate();
+
+  const nameRef = useRef<HTMLInputElement>(null);
+  const username = nameRef.current?.value;
+
+  // const { mutate, isLoading } = useMutation(signIn, {
+  //   onSuccess: () => {
+  //     navigate('/app/today');
+
+  //     if (initAuth.currentUser) {
+  //       updateProfile(initAuth.currentUser, {
+  //         displayName: username,
+  //       }).catch((err) => console.log(err));
+  //     }
+  //   },
+  // });
 
   const signIn = async ({
     auth,
@@ -24,23 +39,18 @@ export const Register = () => {
     email: string;
     password: string;
   }) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
-
-  const nameRef = useRef<HTMLInputElement>(null);
-  const username = nameRef.current?.value;
-
-  const { mutate, isLoading } = useMutation(signIn, {
-    onSuccess: () => {
-      navigate('/app/today');
-
+    return createUserWithEmailAndPassword(auth, email, password).then(() => {
       if (initAuth.currentUser) {
         updateProfile(initAuth.currentUser, {
           displayName: username,
-        }).catch((err) => console.log(err));
+        })
+          .then(() => navigate('/app/today'))
+          .catch((err) => console.log(err));
       }
-    },
-  });
+    });
+  };
+
+  const { mutate, isLoading } = useMutation(signIn);
 
   const { getFieldProps, values, submitForm, errors, touched, handleBlur } = useFormik({
     initialValues: {
@@ -72,6 +82,15 @@ export const Register = () => {
     }),
     onSubmit: () => {
       mutate({ auth: initAuth, email: values.email, password: values.password });
+      // createUserWithEmailAndPassword(initAuth, values.email, values.password).then(() => {
+      //   if (initAuth.currentUser) {
+      //     updateProfile(initAuth.currentUser, {
+      //       displayName: username,
+      //     })
+      //       .then(() => navigate('/app/today'))
+      //       .catch((err) => console.log(err));
+      //   }
+      // });
     },
   });
 
@@ -113,7 +132,7 @@ export const Register = () => {
         touched={touched.confirmPassword}
         onBlur={handleBlur}
       />
-      <Submit title="Sign up" onClick={() => submitForm()} />
+      <Submit onClick={submitForm}>Sign Up</Submit>
       <Divider />
       <S.Footer>
         <S.Text>Already signed up?</S.Text>

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  background-color: ${({ theme }) => theme.baseColors.red};
+  background-color: ${({ theme }) => theme.colors.submitBtn};
   padding: 6px 12px;
-  color: ${({ theme }) => theme.baseColors.white};
+  color: ${({ theme }) => theme.colors.buttonText};
   font-size: ${({ theme }) => theme.fontSize.xsmall};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   border-radius: 4px;
