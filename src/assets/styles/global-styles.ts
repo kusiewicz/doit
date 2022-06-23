@@ -7,8 +7,8 @@ export const GlobalStyle = createGlobalStyle<{ theme: any }>`
    }
 
    html, body {
-        font-family: Roboto;
         height: 100%;
+        background-color: #fff3e9;
     }
 
     .ant-picker-cell {
@@ -53,5 +53,10 @@ export const GlobalStyle = createGlobalStyle<{ theme: any }>`
     .ant-select-item,
     .ant-select-selection-item {
     padding: 0;
+    }
+
+    .ant-alert-error {
+        border-color: ${({ theme }) => theme.colors.authErrorBorder};
+        background-color: ${({ theme }) => theme.colors.authErrorBackground};
     }
 `;

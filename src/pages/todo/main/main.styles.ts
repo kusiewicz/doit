@@ -13,21 +13,27 @@ const Content = styled.div`
   flex: 1;
   max-width: 900px;
   margin: 0 auto;
+  background-image: url('/assets/images/round.svg');
 `;
 
 const Day = styled.span`
+  font-family: Quicksand;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-size: ${({ theme }) => theme.fontSize.xlarge};
+  font-size: ${({ theme }) => theme.fontSize.xxlarge};
   display: inline-block;
   margin-right: ${({ theme }) => theme.spacing.xsmall};
+  color: #573353;
+  font-weight: 500;
 `;
 
 const Date = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.xsmall};
+  font-family: Quicksand;
+  font-size: ${({ theme }) => theme.fontSize.small};
   color: ${({ theme }) => theme.colors.dateText};
   display: inline-block;
   font-weight: ${({ theme }) => theme.fontWeight.light};
   text-transform: capitalize;
+  color: #573353;
 `;
 
 export default { Menu, Content, Day, Date };

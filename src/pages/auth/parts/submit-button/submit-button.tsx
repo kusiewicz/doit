@@ -6,11 +6,11 @@ export const Submit = ({
   children,
   className,
 }: {
-  onClick: () => void;
+  onClick?: () => void;
   children: ReactNode;
   className?: string;
 }) => (
-  <S.Wrapper onClick={onClick} className={className}>
+  <S.Wrapper onClick={onClick} className={className} type="submit">
     {children}
   </S.Wrapper>
 );

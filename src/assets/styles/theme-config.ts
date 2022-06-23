@@ -4,7 +4,7 @@ import {
   DESKTOP_DEVICE_BREAKPOINT,
 } from '../../constants/devices';
 
-type FontSize = 'xsmall' | 'xxsmall' | 'small' | 'normal' | 'large' | 'xlarge';
+type FontSize = 'xsmall' | 'xxsmall' | 'small' | 'normal' | 'large' | 'xlarge' | 'xxlarge';
 
 type FontWeight = 'light' | 'normal' | 'bold';
 
@@ -51,7 +51,9 @@ type Colors =
   | 'emptyStateText'
   | 'navText'
   | 'buttonText'
-  | 'pickerBorder';
+  | 'pickerBorder'
+  | 'authErrorBorder'
+  | 'authErrorBackground';
 
 type BaseColors =
   | 'White100'
@@ -95,7 +97,7 @@ const baseColors: { [key in BaseColors]: string } = {
   Black200: '#1F1F1F',
   White100: '#FFF',
   White200: '#f2f6f7',
-  White300: '#FAFAFA',
+  White300: '#ffE3CC',
   White400: '#F2F2F2',
   Grey100: '#E3E7E8',
   Grey200: 'grey',
@@ -159,6 +161,8 @@ const colors: { [key in Colors]: string } = {
   navText: baseColors.White100,
   buttonText: baseColors.White100,
   pickerBorder: baseColors.Grey300,
+  authErrorBorder: baseColors.Red100,
+  authErrorBackground: baseColors.White300,
 };
 
 const deviceBreakpoint: { [key in Device]: string } = {
@@ -185,6 +189,7 @@ export const theme: Theme = {
     normal: '16px',
     large: '18px',
     xlarge: '21px',
+    xxlarge: '25px',
   },
   fontWeight: {
     light: '100',

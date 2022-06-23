@@ -7,6 +7,7 @@ const DatePicker = styled(DatePickerBase)<{ color: string }>`
   width: fit-content;
   position: relative;
   cursor: pointer;
+  background-color: #fff3e9;
 
   &:hover,
   &:active {

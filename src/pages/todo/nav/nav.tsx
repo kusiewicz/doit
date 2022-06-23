@@ -1,7 +1,7 @@
 import S from './nav.styles';
-import { useUserInfo } from '@lib/use-user-info';
+import { useUserInfo } from '@lib/firebase/use-user-info';
 import { signOut } from 'firebase/auth';
-import { auth } from '@lib/firebase';
+import { auth } from '@lib/firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 
 export const Nav = () => {

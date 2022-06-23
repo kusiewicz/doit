@@ -23,7 +23,7 @@ export const Main = ({ children }: { children: ReactNode }) => {
 
   const getDescription = () => {
     if (tab === Mode.TODAY) {
-      return 'Dziś';
+      return 'Today';
     }
     if (tab === Mode.TOMORROW) {
       return 'Jutro';
@@ -48,7 +48,6 @@ export const Main = ({ children }: { children: ReactNode }) => {
           Nadchodzące 7 dni
         </Bookmark>
       </S.Menu>
-
       <S.Content>
         <S.Day>{getDescription()}</S.Day>
         {tab && <S.Date>{dateToWeekdayDayMonth(day)}</S.Date>}

@@ -22,6 +22,8 @@ const Header = styled.span`
   font-size: ${({ theme }) => theme.fontSize.xlarge};
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.small};
+  font-family: Quicksand;
+  color: #573353;
 `;
 
 const Title = styled.textarea`
@@ -33,6 +35,7 @@ const Title = styled.textarea`
   outline: none;
   overflow: hidden;
   letter-spacing: 0.5px;
+  background-color: #fff3e9;
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.placeholder};
@@ -45,6 +48,7 @@ const Description = styled(Title)`
   margin-top: ${({ theme }) => theme.spacing.small};
   font-size: ${({ theme }) => theme.fontSize.xsmall};
   font-weight: ${({ theme }) => theme.fontWeight.light};
+  background-color: #fff3e9;
 `;
 
 const Add = styled(ButtonBase)<{ disabled: boolean }>`
@@ -61,7 +65,7 @@ const Add = styled(ButtonBase)<{ disabled: boolean }>`
 const Cancel = styled(ButtonBase)`
   font-weight: ${({ theme }) => theme.fontWeight.normal};
   color: ${({ theme }) => theme.colors.editorCancelText};
-  background-color: ${({ theme }) => theme.colors.editorCancelBackground};
+  background-color: #fff3e9;
   border: 1px solid ${({ theme }) => theme.colors.editorBorder};
   text-align: center;
   width: 65px;

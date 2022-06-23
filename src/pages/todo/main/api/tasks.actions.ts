@@ -9,7 +9,7 @@ import {
   QueryDocumentSnapshot,
 } from '@firebase/firestore';
 import { convertToArray } from '@utils/firebase-convert-to-array';
-import { db } from '@lib/firebase';
+import { db } from '@lib/firebase/firebase';
 import { Dayjs } from 'dayjs';
 
 export enum Priorities {

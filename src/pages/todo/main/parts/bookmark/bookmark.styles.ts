@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   border-radius: 6px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.bookmarkHover};
+    background-color: #fff1e6;
   }
 `;
 
@@ -15,9 +15,10 @@ export const Text = styled.span`
   display: inline-block;
   font-weight: ${({ theme }) => theme.fontWeight.light};
   margin-left: ${({ theme }) => theme.spacing.small};
-  font-size: ${({ theme }) => theme.fontSize.xsmall};
+  font-size: ${({ theme }) => theme.fontSize.normal};
   position: relative;
   top: 1px;
+  color: #573353;
 `;
 
 export default { Wrapper, Text };
