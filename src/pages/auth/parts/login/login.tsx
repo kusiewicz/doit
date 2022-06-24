@@ -1,4 +1,4 @@
-import { Divider, Alert } from 'antd';
+import { Alert } from 'antd';
 import { useFormik } from 'formik';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { FormField } from '../form-field/form-field';
@@ -90,13 +90,6 @@ export const Login = () => {
       <Link to="" color="Grey">
         Forgot your password?
       </Link>
-      <Divider />
-      <S.Footer>
-        <S.Text>Don't have an account?</S.Text>
-        <Link to="/auth/register" color="Red">
-          Sign up
-        </Link>
-      </S.Footer>
     </form>
   );
 };

@@ -6,6 +6,8 @@ import { ReactComponent as Github } from '@assets/icons/github.svg';
 import { Outlet } from 'react-router-dom';
 import { SocialButton } from './parts/social-button/social-button';
 import { useState } from 'react';
+import { Divider } from 'antd';
+import { Link } from './parts/link/link';
 
 export enum AuthSite {
   SIGNUP = 'signup',
@@ -27,6 +29,15 @@ export const AuthPage = () => {
           <span>OR</span>
         </S.Divider>
         <Outlet context={setPage} />
+        <Divider />
+        <S.Footer>
+          <S.Text>
+            {page === AuthSite.SIGNUP ? 'Already signed up?' : "Don't have an account?"}
+          </S.Text>
+          <Link to={page === AuthSite.SIGNUP ? '/auth/login' : '/auth/register'} color="Red">
+            {page === AuthSite.SIGNUP ? 'Sign up' : 'Go to login'}
+          </Link>
+        </S.Footer>
       </S.Form>
     </S.Wrapper>
   );

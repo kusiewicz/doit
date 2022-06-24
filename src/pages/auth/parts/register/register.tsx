@@ -1,9 +1,7 @@
-import { Alert, Divider } from 'antd';
+import { Alert } from 'antd';
 import { useFormik } from 'formik';
 import { FormField } from '../form-field/form-field';
-import { Link } from '../link/link';
 import { Submit } from '../submit-button/submit-button';
-import S from './register.styles';
 import { Auth, AuthError, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import * as Yup from 'yup';
 import { useNavigate, useOutletContext } from 'react-router-dom';
@@ -124,13 +122,6 @@ export const Register = () => {
       />
       {error && <Alert message={getReadableAuthError(error?.code)} type="error" />}
       <Submit>Sign Up</Submit>
-      <Divider />
-      <S.Footer>
-        <S.Text>Already signed up?</S.Text>
-        <Link to="/auth/login" color="Red">
-          Go to login
-        </Link>
-      </S.Footer>
     </form>
   );
 };
