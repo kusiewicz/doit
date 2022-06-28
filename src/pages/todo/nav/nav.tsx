@@ -5,12 +5,12 @@ import { auth } from '@lib/firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 
 export const Nav = () => {
-  const { name } = useUserInfo();
+  const { user } = useUserInfo();
   const navigate = useNavigate();
 
   return (
     <S.Wrapper>
-      <S.Text>{name}</S.Text>
+      <S.Text>{user.username}</S.Text>
       <S.Logout
         onClick={() => {
           signOut(auth);

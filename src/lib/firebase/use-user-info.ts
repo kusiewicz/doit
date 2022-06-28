@@ -1,16 +1,22 @@
 import { auth } from './firebase';
-
 import { onAuthStateChanged } from 'firebase/auth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+interface User {
+  username: string;
+  id: string;
+}
 
 export const useUserInfo = () => {
-  const [name, setName] = useState<string | null>('');
+  const [user, setUser] = useState<User>({ username: '', id: '' });
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setName(user.displayName);
-    }
-  });
-  console.log(name);
-  return { name };
+  useEffect(() => {
+    onAuthStateChanged(auth, (userInfo) => {
+      if (userInfo?.displayName && userInfo?.uid) {
+        setUser({ username: userInfo.displayName, id: userInfo.uid });
+      }
+    });
+  }, []);
+
+  return { user };
 };

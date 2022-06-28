@@ -1,6 +1,7 @@
 import S from './task.styles';
 import dayjs, { Dayjs } from 'dayjs';
 import { editTask, TaskData, deleteTask } from '@pages/todo/main/api/tasks.actions';
+import { useUserInfo } from '@lib/firebase/use-user-info';
 
 export const Task = ({
   data,
@@ -11,13 +12,14 @@ export const Task = ({
   onClick: React.MouseEventHandler<HTMLDivElement>;
   refetch: Function;
 }) => {
-  const { id, title, description, date, priority } = data;
+  const { id: taskId, title, description, date, priority } = data;
+  const { user } = useUserInfo();
 
   return (
     <S.Wrapper>
       <S.Delete
         onClick={() => {
-          deleteTask(id);
+          deleteTask(taskId, user.id);
           refetch();
         }}
         priority={priority}
@@ -28,7 +30,7 @@ export const Task = ({
         <S.SmallDatePicker
           date={dayjs(date)}
           onChange={(v: Dayjs) => {
-            editTask(id, { date: v.toISOString() });
+            editTask(taskId, { date: v.toISOString() }, user.id);
           }}
           icon={<S.CalendarIcon />}
         />

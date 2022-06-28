@@ -7,10 +7,11 @@ import { Task } from '../task/task';
 import { Add } from '../add-button/add-button';
 import { Mode } from '../../main';
 import dayjs, { Dayjs } from 'dayjs';
+import { useUserInfo } from '@lib/firebase/use-user-info';
 
 export const Tasks = () => {
   const navigate = useNavigate();
-  const { data, refetch } = useQuery('tasks', getTasks, { cacheTime: 0 });
+  const { user } = useUserInfo();
 
   const { tab } = useParams<{ tab: Mode }>();
 
@@ -25,6 +26,11 @@ export const Tasks = () => {
       return modes[tab];
     }
   };
+
+  const { data, refetch } = useQuery(['tasks', user.id], () => getTasks(user.id), {
+    cacheTime: 0,
+    enabled: !!user.id,
+  });
 
   useEffect(() => {
     if (!data) {

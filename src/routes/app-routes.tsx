@@ -7,6 +7,7 @@ import { Register } from '@pages/auth/parts/register/register';
 import { Login } from '@pages/auth/parts/login/login';
 import { HomePage } from '@pages/home/home-page';
 
+
 export const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Navigate to="/app/today" />} />

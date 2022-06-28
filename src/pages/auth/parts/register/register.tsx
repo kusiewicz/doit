@@ -6,11 +6,12 @@ import { Auth, AuthError, createUserWithEmailAndPassword, updateProfile } from '
 import * as Yup from 'yup';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { LoadingPage } from '@pages/loading/loading-page';
-import { auth as initAuth } from '@lib/firebase/firebase';
+import { auth as initAuth, db } from '@lib/firebase/firebase';
 import { useRef, useState, Dispatch, SetStateAction, useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { getReadableAuthError } from '@lib/firebase/get-readable-auth-error';
 import { AuthSite } from '@pages/auth/auth-page';
+import { setDoc, doc } from 'firebase/firestore';
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -39,7 +40,12 @@ export const Register = () => {
         if (initAuth.currentUser) {
           updateProfile(initAuth.currentUser, {
             displayName: username,
-          }).then(() => navigate('/app/today'));
+          })
+            .then(() => {
+              const id = initAuth.currentUser?.uid || '';
+              setDoc(doc(db, 'users', id), { userId: id });
+            })
+            .then(() => navigate('/app/today'));
         }
       })
       .catch((err) => setError(err));
@@ -79,8 +85,6 @@ export const Register = () => {
       mutate({ auth: initAuth, email: values.email, password: values.password });
     },
   });
-
-  console.log(error);
 
   if (isLoading && !error) {
     return <LoadingPage />;

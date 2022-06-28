@@ -6,6 +6,7 @@ import { createTask, editTask, getTask, Priorities } from '@pages/todo/main/api/
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { useUserInfo } from '@lib/firebase/use-user-info';
 
 const now = dayjs();
 
@@ -28,12 +29,14 @@ export const Editor = () => {
     },
   ];
 
+  const { user } = useUserInfo();
+
   const navigate = useNavigate();
 
-  const { id } = useParams<{ id: string }>();
+  const { id: taskId } = useParams<{ id: string }>();
 
-  const { data, isLoading } = useQuery('task', () => getTask(id as string), {
-    enabled: !!id,
+  const { data, isLoading } = useQuery('task', () => getTask(taskId as string, user.id), {
+    enabled: !!taskId,
     cacheTime: 0,
   });
 
@@ -45,15 +48,15 @@ export const Editor = () => {
       description: description || '',
       priority: (priority as Priorities) || 'Low',
       date: date || now,
-      id: id || '',
+      id: taskId || '',
     },
     enableReinitialize: true,
     onSubmit: (v) => {
-      const vals = { ...v, ...(!id && { id: uuidv4() }), date: dayjs(v.date).toISOString() };
-      if (id) {
-        editTask(id, vals);
+      const vals = { ...v, ...(!taskId && { id: uuidv4() }), date: dayjs(v.date).toISOString() };
+      if (taskId) {
+        editTask(taskId, vals, user.id);
       } else {
-        createTask(vals);
+        createTask(vals, user.id);
       }
       navigate('/');
     },
@@ -61,7 +64,7 @@ export const Editor = () => {
 
   return !isLoading ? (
     <>
-      <S.Header>{id ? 'Edytuj zadanie' : 'Dodaj zadanie'}</S.Header>
+      <S.Header>{taskId ? 'Edytuj zadanie' : 'Dodaj zadanie'}</S.Header>
       <form onSubmit={handleSubmit}>
         <S.Textbox>
           <S.Title placeholder="np. Zorganizuj spotkanie na 11" {...getFieldProps('title')} />
@@ -93,7 +96,7 @@ export const Editor = () => {
         </S.Textbox>
 
         <S.Add disabled={!values.title && !values.description} type="submit">
-          {id ? 'Edytuj' : 'Dodaj zadanie'}
+          {taskId ? 'Edytuj' : 'Dodaj zadanie'}
         </S.Add>
         <S.Cancel type="button" onClick={() => navigate('/')}>
           Anuluj

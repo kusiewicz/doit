@@ -1,12 +1,17 @@
 import {
-  collection,
-  getDocs,
+  collectionGroup,
+  query,
   doc,
   setDoc,
   getDoc,
+  getDocs,
   updateDoc,
   deleteDoc,
   QueryDocumentSnapshot,
+  documentId,
+  orderBy,
+  startAt,
+  endAt,
 } from '@firebase/firestore';
 import { convertToArray } from '@utils/firebase-convert-to-array';
 import { db } from '@lib/firebase/firebase';
@@ -32,28 +37,53 @@ const taskConverter = {
   },
 };
 
-export const getTasks = async () => {
-  const tasks = await getDocs(collection(db, 'tasks').withConverter(taskConverter));
+export const getTasks = async (userId: string) => {
+  // const tasks = await getDocs(
+  //   collection(db, 'tasks', 'ewjRYj7knNPdwHZ9LfGSMDjuWEj2', 'tasks').withConverter(taskConverter),
+  // );
 
-  const dane = convertToArray(tasks);
+  // const dane = convertToArray(tasks);
 
+  // return dane;
+
+  const userRef = doc(db, 'users', userId);
+
+  const tasksRef = collectionGroup(db, 'tasks').withConverter(taskConverter);
+
+  const q = query(
+    tasksRef,
+    orderBy(documentId()),
+    startAt(userRef.path),
+    endAt(userRef.path + '\uf8ff'),
+  );
+
+  const qtas = await getDocs(q);
+
+  const dane = convertToArray(qtas);
   return dane;
 };
 
-export const getTask = async (id: string) => {
-  const task = await getDoc(doc(db, 'tasks', id).withConverter(taskConverter));
+export const getTask = async (taskId: string, userId: string) => {
+  const task = await getDoc(doc(db, 'tasks', userId, taskId).withConverter(taskConverter));
 
   return task.data();
 };
 
-export const createTask = async (task: Omit<TaskData, 'date'> & { date: string }) => {
-  await setDoc(doc(db, 'tasks', task.id), task);
+export const createTask = async (
+  task: Omit<TaskData, 'date'> & { date: string },
+  userId: string,
+) => {
+  await setDoc(doc(db, 'users', userId, 'tasks', task.id), task);
 };
 
-export const editTask = async (id: string, editedField: { [key: string]: Partial<unknown> }) => {
-  await updateDoc(doc(db, 'tasks', id), editedField);
+export const editTask = async (
+  taskId: string,
+  editedField: { [key: string]: Partial<unknown> },
+  userId: string,
+) => {
+  await updateDoc(doc(db, 'users', userId, 'tasks', taskId), editedField);
 };
 
-export const deleteTask = async (id: string) => {
-  await deleteDoc(doc(db, 'tasks', id));
+export const deleteTask = async (taskId: string, userId: string) => {
+  await deleteDoc(doc(db, 'users', userId, 'tasks', taskId));
 };

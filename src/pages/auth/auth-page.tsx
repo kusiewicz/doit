@@ -35,7 +35,7 @@ export const AuthPage = () => {
             {page === AuthSite.SIGNUP ? 'Already signed up?' : "Don't have an account?"}
           </S.Text>
           <Link to={page === AuthSite.SIGNUP ? '/auth/login' : '/auth/register'} color="Red">
-            {page === AuthSite.SIGNUP ? 'Sign up' : 'Go to login'}
+            {page === AuthSite.SIGNUP ? 'Go to login' : 'Sign up'}
           </Link>
         </S.Footer>
       </S.Form>
