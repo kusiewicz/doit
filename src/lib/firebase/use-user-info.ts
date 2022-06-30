@@ -9,14 +9,23 @@ interface User {
 
 export const useUserInfo = () => {
   const [user, setUser] = useState<User>({ username: '', id: '' });
+  const [isLoggedIn, setIsLoggedIn] = useState<string | null>(
+    window.localStorage.getItem('isLoggedIn'),
+  );
 
   useEffect(() => {
-    onAuthStateChanged(auth, (userInfo) => {
+    const listener = onAuthStateChanged(auth, (userInfo) => {
       if (userInfo?.displayName && userInfo?.uid) {
         setUser({ username: userInfo.displayName, id: userInfo.uid });
+        window.localStorage.setItem('isLoggedIn', 'logged');
+      } else {
+        window.localStorage.removeItem('isLoggedIn');
       }
+      setIsLoggedIn(window.localStorage.getItem('isLoggedIn'));
     });
+
+    return () => listener();
   }, []);
 
-  return { user };
+  return { user, isLoggedIn };
 };

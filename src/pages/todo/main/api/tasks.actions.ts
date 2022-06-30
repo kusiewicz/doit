@@ -38,16 +38,7 @@ const taskConverter = {
 };
 
 export const getTasks = async (userId: string) => {
-  // const tasks = await getDocs(
-  //   collection(db, 'tasks', 'ewjRYj7knNPdwHZ9LfGSMDjuWEj2', 'tasks').withConverter(taskConverter),
-  // );
-
-  // const dane = convertToArray(tasks);
-
-  // return dane;
-
   const userRef = doc(db, 'users', userId);
-
   const tasksRef = collectionGroup(db, 'tasks').withConverter(taskConverter);
 
   const q = query(
@@ -57,14 +48,14 @@ export const getTasks = async (userId: string) => {
     endAt(userRef.path + '\uf8ff'),
   );
 
-  const qtas = await getDocs(q);
+  const fetchedData = await getDocs(q);
 
-  const dane = convertToArray(qtas);
-  return dane;
+  const formattedData = convertToArray(fetchedData);
+  return formattedData;
 };
 
 export const getTask = async (taskId: string, userId: string) => {
-  const task = await getDoc(doc(db, 'tasks', userId, taskId).withConverter(taskConverter));
+  const task = await getDoc(doc(db, 'users', userId, 'tasks', taskId).withConverter(taskConverter));
 
   return task.data();
 };

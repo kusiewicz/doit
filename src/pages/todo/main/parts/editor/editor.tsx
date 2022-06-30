@@ -35,10 +35,16 @@ export const Editor = () => {
 
   const { id: taskId } = useParams<{ id: string }>();
 
-  const { data, isLoading } = useQuery('task', () => getTask(taskId as string, user.id), {
-    enabled: !!taskId,
-    cacheTime: 0,
-  });
+  const { data, isLoading } = useQuery(
+    ['task', user.id],
+    () => getTask(taskId as string, user.id),
+    {
+      enabled: !!user.id && !!taskId,
+      cacheTime: 0,
+    },
+  );
+
+  console.log(data);
 
   const { title, description, priority, date } = data ?? {};
 
