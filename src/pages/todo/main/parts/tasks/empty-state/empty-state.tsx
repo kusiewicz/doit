@@ -7,15 +7,30 @@ export const EmptyState = ({ tab }: { tab?: string }) => {
   const isToday = tab === Mode.TODAY;
 
   const EmptyIcon = () => {
-    if (isToday) {
-      return <S.EmptyTodayIcon />;
+    switch (tab) {
+      case Mode.TODAY:
+        return <S.EmptyTodayIcon />;
+      case Mode.TOMORROW:
+        return <S.EmptyTodayIcon />;
+      case Mode.WEEK:
+        return <S.EmptyWeekIcon />;
+      default:
+        return <S.EmptyWeekIcon />;
     }
-    return <S.EmptyTommorowIcon />;
   };
 
   const navigate = useNavigate();
 
-  const Text = isToday ? 'Wszystko zrobione' : 'Zobacz, co masz zaplanowane na następne dni.';
+  const Text = () => {
+    switch (tab) {
+      case Mode.TODAY:
+        return 'Wszystko zrobione';
+      case Mode.TOMORROW:
+        return 'Zobacz, co masz zaplanowane na jutrzejszy dzień';
+      case Mode.WEEK:
+        return 'Plany na nadchodzący tydzień';
+    }
+  };
 
   const SubText = isToday
     ? 'Wygląda na to, że wszystko jest zorganizowane tak jak powinno.'
@@ -24,7 +39,7 @@ export const EmptyState = ({ tab }: { tab?: string }) => {
   return (
     <S.Wrapper>
       <EmptyIcon />
-      <S.Text>{Text}</S.Text>
+      <S.Text>{Text()}</S.Text>
       <S.SubText>{SubText}</S.SubText>
       <Button onClick={() => navigate('/app/add')}>Dodaj zadanie</Button>
     </S.Wrapper>

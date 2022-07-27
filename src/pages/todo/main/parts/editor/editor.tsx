@@ -44,8 +44,6 @@ export const Editor = () => {
     },
   );
 
-  console.log(data);
-
   const { title, description, priority, date } = data ?? {};
 
   const { handleSubmit, getFieldProps, setFieldValue, values } = useFormik({

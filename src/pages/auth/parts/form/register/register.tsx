@@ -1,7 +1,7 @@
 import { Alert } from 'antd';
 import { useFormik } from 'formik';
-import { FormField } from '../form-field/form-field';
-import { Submit } from '../submit-button/submit-button';
+import { FormField } from '../../form-field/form-field';
+import { Submit } from '../../submit-button/submit-button';
 import { Auth, AuthError, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import * as Yup from 'yup';
 import { useNavigate, useOutletContext } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { auth as initAuth, db } from '@lib/firebase/firebase';
 import { useRef, useState, Dispatch, SetStateAction, useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { getReadableAuthError } from '@lib/firebase/get-readable-auth-error';
-import { AuthSite } from '@pages/auth/auth-page';
+import { FormMode } from '@pages/auth/auth-page';
 import { setDoc, doc } from 'firebase/firestore';
 
 export const Register = () => {
@@ -18,11 +18,10 @@ export const Register = () => {
   const [error, setError] = useState<AuthError | null>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const username = nameRef.current?.value;
-  const setPage: Dispatch<SetStateAction<AuthSite.SIGNUP | AuthSite.LOGIN | undefined>> =
-    useOutletContext();
+  const setPage: Dispatch<SetStateAction<FormMode | undefined>> = useOutletContext();
 
   useEffect(() => {
-    setPage(AuthSite.SIGNUP);
+    setPage(FormMode.SIGNUP);
   }, [setPage]);
 
   const signUp = async ({

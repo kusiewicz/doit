@@ -3,16 +3,14 @@ import { Editor } from '@pages/todo/main/parts/editor/editor';
 import { Tasks } from '@pages/todo/main/parts/tasks/tasks';
 import { Routes, Route, Navigate } from 'react-router';
 import { AuthPage } from '@pages/auth/auth-page';
-import { Register } from '@pages/auth/parts/register/register';
-import { Login } from '@pages/auth/parts/login/login';
+import { Register } from '@pages/auth/parts/form/register/register';
+import { Login } from '@pages/auth/parts/form/login/login';
 import { HomePage } from '@pages/home/home-page';
 import { useUserInfo } from '@lib/firebase/use-user-info';
 import { Outlet } from 'react-router-dom';
 
 export const AppRoutes = () => {
   const { isLoggedIn } = useUserInfo();
-
-  console.log(isLoggedIn);
 
   const AuthorizedRoute = () => {
     if (!isLoggedIn) {
@@ -40,8 +38,8 @@ export const AppRoutes = () => {
       </Route>
       <Route path="/auth" element={<UnauthorizedRoute />}>
         <Route path="/auth" element={<AuthPage />}>
-          <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route>
       </Route>
       <Route path="/home" element={<HomePage />} />

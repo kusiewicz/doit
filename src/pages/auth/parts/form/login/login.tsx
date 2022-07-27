@@ -1,9 +1,9 @@
 import { Alert } from 'antd';
 import { useFormik } from 'formik';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { FormField } from '../form-field/form-field';
-import { Link } from '../link/link';
-import { Submit } from '../submit-button/submit-button';
+import { FormField } from '../../form-field/form-field';
+import { Link } from '../../link/link';
+import { Submit } from '../../submit-button/submit-button';
 import S from './login.styles';
 import { auth as initAuth } from '@lib/firebase/firebase';
 import { Auth, signInWithEmailAndPassword, AuthError } from 'firebase/auth';
@@ -12,17 +12,16 @@ import { useMutation } from 'react-query';
 import { LoadingPage } from '@pages/loading/loading-page';
 import * as Yup from 'yup';
 import { getReadableAuthError } from '@lib/firebase/get-readable-auth-error';
-import { AuthSite } from '@pages/auth/auth-page';
+import { FormMode } from '@pages/auth/auth-page';
 
 export const Login = () => {
   const navigate = useNavigate();
   const [keepLogged, setKeepLogged] = useState(false);
   const [error, setError] = useState<AuthError | null>(null);
-  const setPage: Dispatch<SetStateAction<AuthSite.SIGNUP | AuthSite.LOGIN | undefined>> =
-    useOutletContext();
+  const setPage: Dispatch<SetStateAction<FormMode | undefined>> = useOutletContext();
 
   useEffect(() => {
-    setPage(AuthSite.LOGIN);
+    setPage(FormMode.LOGIN);
   }, [setPage]);
 
   const signIn = async ({

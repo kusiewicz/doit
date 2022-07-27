@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as EmptyToday } from '@assets/images/empty-today.svg';
-import { ReactComponent as EmptyTommorow } from '@assets/images/empty-tommorow.svg';
+import { ReactComponent as EmptyWeek } from '@assets/images/empty-week.svg';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -25,9 +25,9 @@ const EmptyTodayIcon = styled(EmptyToday)`
   width: 320px;
 `;
 
-const EmptyTommorowIcon = styled(EmptyTommorow)`
+const EmptyWeekIcon = styled(EmptyWeek)`
   height: 300px;
   width: 320px;
 `;
 
-export default { Wrapper, Text, SubText, EmptyTodayIcon, EmptyTommorowIcon };
+export default { Wrapper, Text, SubText, EmptyTodayIcon, EmptyWeekIcon };
