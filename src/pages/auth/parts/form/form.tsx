@@ -9,9 +9,16 @@ import { ReactComponent as Github } from '@assets/icons/github.svg';
 import S from './form.styles';
 import { FormMode } from '@pages/auth/auth-page';
 import { auth } from '@lib/firebase/firebase';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  GithubAuthProvider,
+} from 'firebase/auth';
 
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 export const Form = () => {
   const [page, setPage] = useState<FormMode | undefined>(undefined);
@@ -23,11 +30,23 @@ export const Form = () => {
         Icon={Google}
         title="Continue with Google"
         onClick={() => {
-          signInWithPopup(auth, provider);
+          signInWithPopup(auth, googleProvider);
         }}
       />
-      <SocialButton Icon={Facebook} title="Continue with Facebook" onClick={() => {}} />
-      <SocialButton Icon={Github} title="Continue with Github" onClick={() => {}} />
+      <SocialButton
+        Icon={Facebook}
+        title="Continue with Facebook"
+        onClick={() => {
+          signInWithPopup(auth, facebookProvider);
+        }}
+      />
+      <SocialButton
+        Icon={Github}
+        title="Continue with Github"
+        onClick={() => {
+          signInWithPopup(auth, githubProvider);
+        }}
+      />
       <S.Divider>
         <span>OR</span>
       </S.Divider>
