@@ -72,7 +72,10 @@ export const Register = () => {
         .min(6, 'Use at least 6 characters.')
         .max(50, 'Use up to 50 characters')
         .required('Field is required')
-        .matches(/^(?=.*\d)[a-zA-Z\d*.!@$%^&(){}[\]:;<>,.?/~_+\-/=|\\]{6,}/),
+        .matches(
+          /^(?=.*\d)[a-zA-Z\d*.!@$%^&(){}[\]:;<>,.?/~_+\-/=|\\]{6,}/,
+          'Password must contain: lower case letter, upper case letter and numeric character.',
+        ),
       confirmPassword: Yup.string()
         .required('Field is required')
         .when('password', {

@@ -59,6 +59,7 @@ const Add = styled(ButtonBase)<{ disabled: boolean }>`
   :disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    background-color: ${({ theme }) => theme.colors.submitBtn};
   }
 `;
 
@@ -70,6 +71,10 @@ const Cancel = styled(ButtonBase)`
   text-align: center;
   width: 65px;
   margin-top: ${({ theme }) => theme.spacing.normal};
+
+  &:hover {
+    background-color: #fff3e9;
+  }
 `;
 
 const Select = styled(SelectBase)`

@@ -7,11 +7,12 @@ const DatePicker = styled(DatePickerBase)<{ color: string }>`
   width: fit-content;
   position: relative;
   cursor: pointer;
-  background-color: #fff3e9;
+  background-color: transparent;
 
+  &:focus,
   &:hover,
   &:active {
-    background: ${({ theme }) => theme.colors.hoveredPicker};
+    background: #fdddc3;
     border: 1px solid ${({ theme }) => theme.colors.pickerBorder};
   }
 
@@ -26,6 +27,7 @@ const DatePicker = styled(DatePickerBase)<{ color: string }>`
   }
 
   &.ant-picker-focused {
+    border: 1px solid ${({ theme }) => theme.colors.pickerBorder};
     box-shadow: none;
   }
 

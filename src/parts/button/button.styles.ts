@@ -14,6 +14,8 @@ const Button = styled.button`
 
   &:hover {
     cursor: pointer;
+
+    background: ${({ theme }) => theme.colors.submitBtnHover};
   }
 `;
 

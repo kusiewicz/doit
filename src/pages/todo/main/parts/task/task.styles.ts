@@ -34,6 +34,14 @@ const SmallDatePicker = styled(DatePickerBase)`
   margin-right: -5px;
   display: block;
   margin-top: -3px;
+  border: none !important;
+
+  &:focus,
+  &:hover,
+  &:active {
+    background: #fdddc3;
+    border: none;
+  }
 
   .ant-picker-suffix {
     margin-left: 0;

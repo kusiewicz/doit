@@ -97,7 +97,7 @@ const baseColors: { [key in BaseColors]: string } = {
   Black200: '#1F1F1F',
   White100: '#FFF',
   White200: '#f2f6f7',
-  White300: '#ffE3CC',
+  White300: '#FFE3CC',
   White400: '#F2F2F2',
   Grey100: '#E3E7E8',
   Grey200: 'grey',
