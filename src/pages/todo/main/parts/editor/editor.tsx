@@ -62,7 +62,14 @@ export const Editor = () => {
       } else {
         createTask(vals, user.id);
       }
-      navigate('/');
+      const dateToDayjs = dayjs(v.date);
+      if (dateToDayjs.isToday()) {
+        return navigate('/app/today');
+      }
+      if (dateToDayjs.isTomorrow()) {
+        return navigate('/app/tomorrow');
+      }
+      return navigate('/app/upcoming');
     },
   });
 
