@@ -8,6 +8,7 @@ import { Login } from '@pages/auth/parts/form/login/login';
 import { HomePage } from '@pages/home/home-page';
 import { useUserInfo } from '@lib/firebase/use-user-info';
 import { Outlet } from 'react-router-dom';
+import { ErrorPage } from '@pages/error/error-page';
 
 export const AppRoutes = () => {
   const { isLoggedIn } = useUserInfo();
@@ -42,8 +43,10 @@ export const AppRoutes = () => {
           <Route path="register" element={<Register />} />
         </Route>
       </Route>
-      <Route path="/home" element={<HomePage />} />
-      <Route path="*" element={<p>Nie ma</p>} />
+      <Route path="/home" element={<UnauthorizedRoute />}>
+        <Route path="/home" element={<HomePage />} />
+      </Route>
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 };

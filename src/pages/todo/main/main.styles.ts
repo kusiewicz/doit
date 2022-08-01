@@ -22,7 +22,7 @@ const Day = styled.span`
   font-size: ${({ theme }) => theme.fontSize.xxlarge};
   display: inline-block;
   margin-right: ${({ theme }) => theme.spacing.xsmall};
-  color: #573353;
+  color: ${({ theme }) => theme.colors.fontPrimary};
   font-weight: 500;
 `;
 
@@ -33,7 +33,7 @@ const Date = styled.span`
   display: inline-block;
   font-weight: ${({ theme }) => theme.fontWeight.light};
   text-transform: capitalize;
-  color: #573353;
+  color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
 export default { Menu, Content, Day, Date };

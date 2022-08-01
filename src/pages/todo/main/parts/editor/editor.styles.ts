@@ -23,7 +23,7 @@ const Header = styled.span`
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.small};
   font-family: Quicksand;
-  color: #573353;
+  color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
 const Title = styled.textarea`

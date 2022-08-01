@@ -53,7 +53,8 @@ type Colors =
   | 'buttonText'
   | 'pickerBorder'
   | 'authErrorBorder'
-  | 'authErrorBackground';
+  | 'authErrorBackground'
+  | 'fontPrimary';
 
 type BaseColors =
   | 'White100'
@@ -77,7 +78,8 @@ type BaseColors =
   | 'Grey600'
   | 'Black200'
   | 'Grey700'
-  | 'White400';
+  | 'White400'
+  | 'Purple200';
 
 type Device = 'mobile' | 'desktop' | 'tablet';
 
@@ -115,6 +117,7 @@ const baseColors: { [key in BaseColors]: string } = {
   Green100: '#058236',
   Blue100: '#246FE0',
   Purple100: '#692FC2',
+  Purple200: '#573353',
 };
 
 const colors: { [key in Colors]: string } = {
@@ -163,6 +166,7 @@ const colors: { [key in Colors]: string } = {
   pickerBorder: baseColors.Grey300,
   authErrorBorder: baseColors.Red100,
   authErrorBackground: baseColors.White300,
+  fontPrimary: baseColors.Purple200,
 };
 
 const deviceBreakpoint: { [key in Device]: string } = {

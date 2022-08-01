@@ -18,7 +18,7 @@ export const Text = styled.span`
   font-size: ${({ theme }) => theme.fontSize.normal};
   position: relative;
   top: 1px;
-  color: #573353;
+  color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
 export default { Wrapper, Text };

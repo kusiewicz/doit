@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useUserInfo } from '@lib/firebase/use-user-info';
+import { LoadingPage } from '@pages/loading/loading-page';
 
 const now = dayjs();
 
@@ -115,6 +116,6 @@ export const Editor = () => {
       </form>
     </>
   ) : (
-    <h1>loading</h1>
+    <LoadingPage />
   );
 };
