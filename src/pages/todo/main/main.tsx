@@ -13,7 +13,13 @@ export enum Mode {
   WEEK = 'upcoming',
 }
 
-export const Main = ({ children }: { children: ReactNode }) => {
+export const Main = ({
+  children,
+  menuVisibility,
+}: {
+  children: ReactNode;
+  menuVisibility: boolean;
+}) => {
   const navigate = useNavigate();
 
   const { tab } = useParams<{ tab: Mode }>();
@@ -35,7 +41,7 @@ export const Main = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <S.Menu>
+      <S.Menu shouldHide={!menuVisibility}>
         <Bookmark Icon={TodayIcon} onClick={() => navigate('/app/today')}>
           Dziś
         </Bookmark>

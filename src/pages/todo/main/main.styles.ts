@@ -1,11 +1,18 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const Menu = styled.div`
+const Menu = styled.div<{ shouldHide: boolean }>`
   background-color: ${({ theme }) => theme.colors.menuBackground};
   width: 300px;
   padding-top: 30px;
   padding-left: 35px;
   min-height: calc(100% - 44px);
+  transition: transform 1s ease-in-out;
+
+  ${({ shouldHide }) =>
+    shouldHide &&
+    css`
+      transform: translate(-300px, 0);
+    `}
 `;
 
 const Content = styled.div`
