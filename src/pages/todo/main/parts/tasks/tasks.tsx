@@ -38,8 +38,6 @@ export const Tasks = () => {
     }
   }, [data, refetch]);
 
-  console.log(data);
-
   return (
     <>
       {data?.[0] ? (

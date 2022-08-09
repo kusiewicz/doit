@@ -6,21 +6,58 @@ const Menu = styled.div<{ shouldHide: boolean }>`
   padding-top: 30px;
   padding-left: 35px;
   min-height: calc(100% - 44px);
-  transition: transform 1s ease-in-out;
+
+  @keyframes hideMenu {
+    0% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(-300px, 0);
+    }
+
+    100% {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+  }
+
+  @keyframes showMenu {
+    0% {
+      transform: translate(-300px, 0);
+    }
+
+    50% {
+      transform: translate(0, 0);
+    }
+
+    100% {
+      width: 300px;
+      opacity: 1;
+    }
+  }
 
   ${({ shouldHide }) =>
-    shouldHide &&
-    css`
-      transform: translate(-300px, 0);
-    `}
+    shouldHide
+      ? css`
+          animation: hideMenu 0.5s;
+          animation-fill-mode: forwards;
+        `
+      : css`
+          animation: showMenu 0.5s;
+          animation-fill-mode: forwards;
+        `};
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ shouldHide: boolean }>`
   padding: 36px 55px;
   flex: 1;
   max-width: 900px;
   margin: 0 auto;
-  background-image: url('/assets/images/round.svg');
+  min-height: calc(100% - 44px);
 `;
 
 const Day = styled.span`

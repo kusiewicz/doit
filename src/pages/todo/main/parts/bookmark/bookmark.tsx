@@ -5,11 +5,14 @@ interface BookmarkProps {
   Icon: Function;
   children: ReactNode;
   onClick: () => void;
+  highlighted?: boolean;
 }
 
-export const Bookmark = ({ Icon, children, onClick }: BookmarkProps) => (
-  <S.Wrapper onClick={onClick}>
-    <Icon />
-    <S.Text>{children}</S.Text>
-  </S.Wrapper>
-);
+export const Bookmark = ({ Icon, children, onClick, highlighted }: BookmarkProps) => {
+  return (
+    <S.Wrapper onClick={onClick} highlighted={highlighted}>
+      <Icon />
+      <S.Text>{children}</S.Text>
+    </S.Wrapper>
+  );
+};

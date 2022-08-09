@@ -42,19 +42,31 @@ export const Main = ({
   return (
     <>
       <S.Menu shouldHide={!menuVisibility}>
-        <Bookmark Icon={TodayIcon} onClick={() => navigate('/app/today')}>
+        <Bookmark
+          Icon={TodayIcon}
+          onClick={() => navigate('/app/today')}
+          highlighted={tab === Mode.TODAY}
+        >
           Dziś
         </Bookmark>
 
-        <Bookmark Icon={TommorowIcon} onClick={() => navigate('/app/tomorrow')}>
+        <Bookmark
+          Icon={TommorowIcon}
+          onClick={() => navigate('/app/tomorrow')}
+          highlighted={tab === Mode.TOMORROW}
+        >
           Jutro
         </Bookmark>
 
-        <Bookmark Icon={IncomingIcon} onClick={() => navigate('/app/upcoming')}>
+        <Bookmark
+          Icon={IncomingIcon}
+          onClick={() => navigate('/app/upcoming')}
+          highlighted={tab === Mode.WEEK}
+        >
           Nadchodzące 7 dni
         </Bookmark>
       </S.Menu>
-      <S.Content>
+      <S.Content shouldHide={!menuVisibility}>
         <S.Day>{getDescription()}</S.Day>
         {tab && <S.Date>{dateToWeekdayDayMonth(day)}</S.Date>}
         {children}

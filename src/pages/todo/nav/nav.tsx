@@ -14,7 +14,6 @@ export const Nav = ({
 }) => {
   const { user } = useUserInfo();
   const navigate = useNavigate();
-  console.log(setMenuVisibility);
 
   const hamburger = () => (
     <S.Hamburger
