@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: any }>`
 
    html, body {
         height: 100%;
-        background-color: #fff3e9;
+        background-color: ${({ theme }) => theme.colors.mainBackground};
     }
 
     .ant-picker-cell {

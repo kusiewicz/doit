@@ -54,7 +54,9 @@ type Colors =
   | 'pickerBorder'
   | 'authErrorBorder'
   | 'authErrorBackground'
-  | 'fontPrimary';
+  | 'fontPrimary'
+  | 'bookmarkBackground'
+  | 'mainBackground';
 
 type BaseColors =
   | 'White100'
@@ -79,7 +81,8 @@ type BaseColors =
   | 'Black200'
   | 'Grey700'
   | 'White400'
-  | 'Purple200';
+  | 'Purple200'
+  | 'Peach100';
 
 type Device = 'mobile' | 'desktop' | 'tablet';
 
@@ -118,6 +121,7 @@ const baseColors: { [key in BaseColors]: string } = {
   Blue100: '#246FE0',
   Purple100: '#692FC2',
   Purple200: '#573353',
+  Peach100: '#FFF3E9',
 };
 
 const colors: { [key in Colors]: string } = {
@@ -131,7 +135,7 @@ const colors: { [key in Colors]: string } = {
   buttonAnother: baseColors.Grey500,
   hoveredPicker: baseColors.White200,
   description: baseColors.Grey400,
-  taskBorder: baseColors.White200,
+  taskBorder: baseColors.White300,
   checkbox: baseColors.Grey200,
   logo: baseColors.Red100,
   authBackground: baseColors.White300,
@@ -167,6 +171,8 @@ const colors: { [key in Colors]: string } = {
   authErrorBorder: baseColors.Red100,
   authErrorBackground: baseColors.White300,
   fontPrimary: baseColors.Purple200,
+  bookmarkBackground: baseColors.Peach100,
+  mainBackground: baseColors.Peach100,
 };
 
 const deviceBreakpoint: { [key in Device]: string } = {

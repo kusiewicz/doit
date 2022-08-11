@@ -7,6 +7,10 @@ const Wrapper = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.taskBorder};
   display: flex;
   cursor: pointer;
+
+  &:last-of-type {
+    border: none;
+  }
 `;
 
 const Task = styled.div`

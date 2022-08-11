@@ -5,7 +5,6 @@ import { ReactComponent as PriorityIconBase } from '@assets/icons/priority-flag.
 import { ReactComponent as CheckmarkBase } from '@assets/icons/checkmark.svg';
 
 const Textbox = styled.div`
-  width: 100%;
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.colors.editorBorder};
   padding: ${({ theme }) => theme.spacing.normal};
@@ -35,7 +34,7 @@ const Title = styled.textarea`
   outline: none;
   overflow: hidden;
   letter-spacing: 0.5px;
-  background-color: #fff3e9;
+  background-color: ${({ theme }) => theme.colors.mainBackground};
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.placeholder};
@@ -48,7 +47,7 @@ const Description = styled(Title)`
   margin-top: ${({ theme }) => theme.spacing.small};
   font-size: ${({ theme }) => theme.fontSize.xsmall};
   font-weight: ${({ theme }) => theme.fontWeight.light};
-  background-color: #fff3e9;
+  background-color: ${({ theme }) => theme.colors.mainBackground};
 `;
 
 const Add = styled(ButtonBase)<{ disabled: boolean }>`
@@ -66,14 +65,14 @@ const Add = styled(ButtonBase)<{ disabled: boolean }>`
 const Cancel = styled(ButtonBase)`
   font-weight: ${({ theme }) => theme.fontWeight.normal};
   color: ${({ theme }) => theme.colors.editorCancelText};
-  background-color: #fff3e9;
+  background-color: ${({ theme }) => theme.colors.mainBackground};
   border: 1px solid ${({ theme }) => theme.colors.editorBorder};
   text-align: center;
   width: 65px;
   margin-top: ${({ theme }) => theme.spacing.normal};
 
   &:hover {
-    background-color: #fff3e9;
+    background-color: ${({ theme }) => theme.colors.mainBackground};
   }
 `;
 

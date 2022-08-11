@@ -1,18 +1,11 @@
 import styled from 'styled-components';
 
-const Day = styled.span`
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-size: ${({ theme }) => theme.fontSize.xlarge};
-  display: inline-block;
-  margin-right: ${({ theme }) => theme.spacing.xsmall};
+const Wrapper = styled.div`
+  display: block;
+
+  > div:nth-last-child(2) {
+    border: none;
+  }
 `;
 
-const Date = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.xsmall};
-  color: ${({ theme }) => theme.colors.dateText};
-  display: inline-block;
-  font-weight: ${({ theme }) => theme.fontWeight.light};
-  text-transform: capitalize;
-`;
-
-export default { Day, Date };
+export default { Wrapper };

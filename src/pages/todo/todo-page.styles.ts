@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   height: 100vh;
   flex-wrap: wrap;
-  background-color: #fff3e9;
+  background-color: ${({ theme }) => theme.colors.mainBackground};
   position: relative;
 `;
 

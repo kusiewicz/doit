@@ -8,6 +8,7 @@ import { Add } from '../add-button/add-button';
 import { Mode } from '../../main';
 import dayjs, { Dayjs } from 'dayjs';
 import { useUserInfo } from '@lib/firebase/use-user-info';
+import S from './tasks.styles';
 
 export const Tasks = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export const Tasks = () => {
   return (
     <>
       {data?.[0] ? (
-        <>
+        <S.Wrapper>
           {data.map(
             (task) =>
               checkMode(task.date) && (
@@ -54,7 +55,7 @@ export const Tasks = () => {
               ),
           )}
           <Add />
-        </>
+        </S.Wrapper>
       ) : (
         <EmptyState tab={tab} />
       )}
