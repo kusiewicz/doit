@@ -8,39 +8,6 @@ const Menu = styled.div<{ shouldHide: boolean }>`
   min-height: calc(100% - 44px);
   transition: 0.5s;
 
-  @keyframes hideMenu {
-    0% {
-      transform: translate(0, 0);
-    }
-
-    50% {
-      transform: translate(-300px, 0);
-    }
-
-    100% {
-      visibility: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-    }
-  }
-
-  @keyframes showMenu {
-    0% {
-      transform: translate(-300px, 0);
-    }
-
-    50% {
-      transform: translate(0, 0);
-    }
-
-    100% {
-      width: 300px;
-      opacity: 1;
-    }
-  }
-
   ${({ shouldHide }) =>
     shouldHide
       ? css`
@@ -48,7 +15,7 @@ const Menu = styled.div<{ shouldHide: boolean }>`
           transform: translate(-300px, 0);
           opacity: 0;
           width: 0;
-          padding-left: 0;
+          padding-left: 1px;
           /* position: absolute;
           top: 0;
           left: 0; */

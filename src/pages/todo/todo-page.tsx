@@ -3,9 +3,14 @@ import { Main } from './main/main';
 import { Nav } from './nav/nav';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import { useDeviceDetect } from '@utils/hooks/use-device-detect';
 
 export const TodoPage = () => {
-  const [menuVisibility, setMenuVisibility] = useState<boolean>(true);
+  const {
+    deviceData: { isMobile },
+  } = useDeviceDetect();
+
+  const [menuVisibility, setMenuVisibility] = useState<boolean>(isMobile ? false : true);
 
   return (
     <S.Wrapper>

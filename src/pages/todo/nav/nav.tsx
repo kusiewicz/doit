@@ -4,6 +4,8 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@lib/firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 import { Dispatch, SetStateAction } from 'react';
+import { useMutation } from 'react-query';
+import { LoadingPage } from '@pages/loading/loading-page';
 
 export const Nav = ({
   menuVisibility,
@@ -14,6 +16,10 @@ export const Nav = ({
 }) => {
   const { user } = useUserInfo();
   const navigate = useNavigate();
+
+  const { isLoading, mutate } = useMutation(async () => signOut(auth), {
+    onSuccess: () => navigate('/home'),
+  });
 
   const hamburger = () => (
     <S.Hamburger
@@ -26,18 +32,13 @@ export const Nav = ({
     </S.Hamburger>
   );
 
+  if (isLoading) return <LoadingPage />;
+
   return (
     <S.Wrapper>
       {hamburger()}
       <S.Text>{user.username}</S.Text>
-      <S.Logout
-        onClick={() => {
-          signOut(auth);
-          navigate('/home');
-        }}
-      >
-        Sign out
-      </S.Logout>
+      <S.Logout onClick={() => mutate()}>Sign out</S.Logout>
     </S.Wrapper>
   );
 };

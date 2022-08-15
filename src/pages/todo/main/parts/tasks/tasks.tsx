@@ -9,6 +9,7 @@ import { Mode } from '../../main';
 import dayjs, { Dayjs } from 'dayjs';
 import { useUserInfo } from '@lib/firebase/use-user-info';
 import S from './tasks.styles';
+import { LoadingPage } from '@pages/loading/loading-page';
 
 export const Tasks = () => {
   const navigate = useNavigate();
@@ -39,21 +40,22 @@ export const Tasks = () => {
     }
   }, [data, refetch]);
 
+  if (!data) return <LoadingPage />;
+
+  const filteredData = data.filter((task) => checkMode(task.date));
+
   return (
     <>
-      {data?.[0] ? (
+      {filteredData?.[0] ? (
         <S.Wrapper>
-          {data.map(
-            (task) =>
-              checkMode(task.date) && (
-                <Task
-                  onClick={() => navigate(`/app/task/${task.id}`)}
-                  data={task}
-                  key={task.id}
-                  refetch={refetch}
-                />
-              ),
-          )}
+          {filteredData.map((task) => (
+            <Task
+              onClick={() => navigate(`/app/task/${task.id}`)}
+              data={task}
+              key={task.id}
+              refetch={refetch}
+            />
+          ))}
           <Add />
         </S.Wrapper>
       ) : (
