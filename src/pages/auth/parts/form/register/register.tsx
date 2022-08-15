@@ -39,18 +39,18 @@ export const Register = () => {
         if (initAuth.currentUser) {
           updateProfile(initAuth.currentUser, {
             displayName: username,
-          })
-            .then(() => {
-              const id = initAuth.currentUser?.uid || '';
-              setDoc(doc(db, 'users', id), { userId: id });
-            })
-            .then(() => navigate('/app/today'));
+          }).then(() => {
+            const id = initAuth.currentUser?.uid || '';
+            setDoc(doc(db, 'users', id), { userId: id });
+          });
         }
       })
       .catch((err) => setError(err));
   };
 
-  const { mutate, isLoading } = useMutation(signUp);
+  const { mutate, isLoading } = useMutation(signUp, {
+    onSuccess: () => navigate('/app/today'),
+  });
 
   const { getFieldProps, values, handleSubmit, errors, touched, handleBlur } = useFormik({
     initialValues: {

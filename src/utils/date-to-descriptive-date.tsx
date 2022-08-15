@@ -2,11 +2,11 @@ import dayjs, { Dayjs } from 'dayjs';
 
 export const dateToDescriptiveDate = (value: Dayjs) => {
   if (value.isToday()) {
-    return 'Dziś';
+    return 'Today';
   }
 
   if (value.isTomorrow()) {
-    return 'Jutro';
+    return 'Tomorrow';
   }
 
   if (value.diff(dayjs(), 'day') <= 6) {

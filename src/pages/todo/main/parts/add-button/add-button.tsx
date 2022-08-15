@@ -9,7 +9,7 @@ export const Add = () => {
       <S.PlusHover>
         <S.Plus />
       </S.PlusHover>
-      Dodaj zadanie
+      Add task
     </S.Add>
   );
 };

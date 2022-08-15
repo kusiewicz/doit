@@ -1,15 +1,15 @@
 import S from './date-picker.styles';
-import 'dayjs/locale/pl';
+import 'dayjs/locale/en';
 import dayjs, { Dayjs } from 'dayjs';
 import { ReactNode, useState } from 'react';
-import locale from 'antd/es/date-picker/locale/pl_PL';
+import locale from 'antd/es/date-picker/locale/en_GB';
 import isTomorrow from 'dayjs/plugin/isTomorrow';
 import isToday from 'dayjs/plugin/isToday';
 import { dateToDescriptiveDate } from '@utils/date-to-descriptive-date';
 
 dayjs.extend(isToday);
 dayjs.extend(isTomorrow);
-dayjs.locale('pl');
+dayjs.locale('en');
 
 export const DatePicker = ({
   date: incomingDate,

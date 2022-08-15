@@ -25,17 +25,17 @@ export const Main = ({
   const { tab } = useParams<{ tab: Mode }>();
   const isToday = tab === 'today';
 
-  const day = isToday ? 'Dziś' : 'Jutro';
+  const day = isToday ? 'Today' : 'Tomorrow';
 
   const getDescription = () => {
     if (tab === Mode.TODAY) {
       return 'Today';
     }
     if (tab === Mode.TOMORROW) {
-      return 'Jutro';
+      return 'Tomorrow';
     }
     if (tab === Mode.WEEK) {
-      return 'Nadchodzące';
+      return 'Upcoming';
     }
   };
 
@@ -47,7 +47,7 @@ export const Main = ({
           onClick={() => navigate('/app/today')}
           highlighted={tab === Mode.TODAY}
         >
-          Dziś
+          Today
         </Bookmark>
 
         <Bookmark
@@ -55,7 +55,7 @@ export const Main = ({
           onClick={() => navigate('/app/tomorrow')}
           highlighted={tab === Mode.TOMORROW}
         >
-          Jutro
+          Tomorrow
         </Bookmark>
 
         <Bookmark
@@ -63,12 +63,12 @@ export const Main = ({
           onClick={() => navigate('/app/upcoming')}
           highlighted={tab === Mode.WEEK}
         >
-          Nadchodzące 7 dni
+          Upcoming week
         </Bookmark>
       </S.Menu>
       <S.Content shouldHide={!menuVisibility}>
         <S.Day>{getDescription()}</S.Day>
-        {tab && <S.Date>{dateToWeekdayDayMonth(day)}</S.Date>}
+        {tab && tab !== Mode.WEEK && <S.Date>{dateToWeekdayDayMonth(day)}</S.Date>}
         {children}
       </S.Content>
     </>

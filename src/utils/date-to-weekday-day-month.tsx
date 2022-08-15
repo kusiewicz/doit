@@ -3,7 +3,7 @@ import 'dayjs/locale/pl';
 dayjs.locale('pl');
 
 export const dateToWeekdayDayMonth = (mode: string) => {
-  if (mode === 'Dziś') {
+  if (mode === 'Today') {
     return dayjs().format('ddd D MMM');
   }
 

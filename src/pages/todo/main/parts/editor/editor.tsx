@@ -76,10 +76,10 @@ export const Editor = () => {
 
   return !isLoading ? (
     <>
-      <S.Header>{taskId ? 'Edytuj zadanie' : 'Dodaj zadanie'}</S.Header>
+      <S.Header>{taskId ? 'Edit task' : 'Add task'}</S.Header>
       <form onSubmit={handleSubmit}>
         <S.Textbox>
-          <S.Title placeholder="np. Zorganizuj spotkanie na 11" {...getFieldProps('title')} />
+          <S.Title placeholder="e.g. Hold meeting at 11" {...getFieldProps('title')} />
           <S.Description {...getFieldProps('description')} placeholder="Opis" />
           <DatePicker
             date={dayjs(date)}
@@ -108,10 +108,10 @@ export const Editor = () => {
         </S.Textbox>
 
         <S.Add disabled={!values.title && !values.description} type="submit">
-          {taskId ? 'Edytuj' : 'Dodaj zadanie'}
+          {taskId ? 'Edit' : 'Add task'}
         </S.Add>
         <S.Cancel type="button" onClick={() => navigate('/')}>
-          Anuluj
+          Cancel
         </S.Cancel>
       </form>
     </>

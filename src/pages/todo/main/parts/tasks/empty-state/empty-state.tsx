@@ -24,24 +24,24 @@ export const EmptyState = ({ tab }: { tab?: string }) => {
   const Text = () => {
     switch (tab) {
       case Mode.TODAY:
-        return 'Wszystko zrobione';
+        return 'Everything is done!';
       case Mode.TOMORROW:
-        return 'Zobacz, co masz zaplanowane na jutrzejszy dzień';
+        return 'See what you have planned for tomorrow!';
       case Mode.WEEK:
-        return 'Plany na nadchodzący tydzień';
+        return 'Plans for the upcoming week!';
     }
   };
 
   const SubText = isToday
-    ? 'Wygląda na to, że wszystko jest zorganizowane tak jak powinno.'
-    : 'Wszystkie zadania do wykonania będą tu widoczne';
+    ? 'It seems that everything is organized as it should be.'
+    : 'All tasks to be performed will be visible here.';
 
   return (
     <S.Wrapper>
       <EmptyIcon />
       <S.Text>{Text()}</S.Text>
       <S.SubText>{SubText}</S.SubText>
-      <Button onClick={() => navigate('/app/add')}>Dodaj zadanie</Button>
+      <Button onClick={() => navigate('/app/add')}>Add task</Button>
     </S.Wrapper>
   );
 };
