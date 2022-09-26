@@ -4,8 +4,8 @@ import { IncomingIcon } from './parts/icons/incoming-icon/incoming-icon';
 import { TodayIcon } from './parts/icons/today-icon/today-icon';
 import { TommorowIcon } from './parts/icons/tommorow-icon/tommorow-icon';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ReactNode } from 'react';
 import { dateToWeekdayDayMonth } from '@utils/date-to-weekday-day-month';
+import { Dispatch, SetStateAction, ReactNode } from 'react';
 
 export enum Mode {
   TODAY = 'today',
@@ -16,9 +16,13 @@ export enum Mode {
 export const Main = ({
   children,
   menuVisibility,
+  isMobile,
+  setMenuVisibility,
 }: {
   children: ReactNode;
   menuVisibility: boolean;
+  isMobile: boolean;
+  setMenuVisibility: Dispatch<SetStateAction<boolean>>;
 }) => {
   const navigate = useNavigate();
 
@@ -39,12 +43,21 @@ export const Main = ({
     }
   };
 
+  const hideMenuIfMobile = () => {
+    if (isMobile) {
+      setMenuVisibility(false);
+    }
+  };
+
   return (
     <>
       <S.Menu shouldHide={!menuVisibility}>
         <Bookmark
           Icon={TodayIcon}
-          onClick={() => navigate('/app/today')}
+          onClick={() => {
+            navigate('/app/today');
+            hideMenuIfMobile();
+          }}
           highlighted={tab === Mode.TODAY}
         >
           Today
@@ -52,7 +65,10 @@ export const Main = ({
 
         <Bookmark
           Icon={TommorowIcon}
-          onClick={() => navigate('/app/tomorrow')}
+          onClick={() => {
+            navigate('/app/tomorrow');
+            hideMenuIfMobile();
+          }}
           highlighted={tab === Mode.TOMORROW}
         >
           Tomorrow
@@ -60,7 +76,10 @@ export const Main = ({
 
         <Bookmark
           Icon={IncomingIcon}
-          onClick={() => navigate('/app/upcoming')}
+          onClick={() => {
+            navigate('/app/upcoming');
+            hideMenuIfMobile();
+          }}
           highlighted={tab === Mode.WEEK}
         >
           Upcoming week

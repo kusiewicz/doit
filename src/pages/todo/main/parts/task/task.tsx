@@ -31,6 +31,7 @@ export const Task = ({
           date={dayjs(date)}
           onChange={(v: Dayjs) => {
             editTask(taskId, { date: v.toISOString() }, user.id);
+            refetch();
           }}
           icon={<S.CalendarIcon />}
         />

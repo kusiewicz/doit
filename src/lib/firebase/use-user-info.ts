@@ -14,9 +14,12 @@ export const useUserInfo = () => {
   );
 
   useEffect(() => {
-    const listener = onAuthStateChanged(auth, (userInfo) => {
-      if (userInfo?.displayName && userInfo?.uid) {
-        setUser({ username: userInfo.displayName, id: userInfo.uid });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const listener = onAuthStateChanged(auth, (userInfo: any) => {
+      const nickname = userInfo?.displayName || userInfo?.reloadUserInfo.screenName;
+      console.log(nickname);
+      if (nickname && userInfo?.uid) {
+        setUser({ username: nickname, id: userInfo.uid });
         window.localStorage.setItem('isLoggedIn', 'logged');
       } else {
         window.localStorage.removeItem('isLoggedIn');
@@ -27,5 +30,5 @@ export const useUserInfo = () => {
     return () => listener();
   }, []);
 
-  return { user, isLoggedIn };
+  return { user, isLoggedIn, setUser };
 };

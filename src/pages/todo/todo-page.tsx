@@ -15,7 +15,11 @@ export const TodoPage = () => {
   return (
     <S.Wrapper>
       <Nav setMenuVisibility={setMenuVisibility} menuVisibility={menuVisibility} />
-      <Main menuVisibility={menuVisibility}>
+      <Main
+        setMenuVisibility={setMenuVisibility}
+        menuVisibility={menuVisibility}
+        isMobile={isMobile}
+      >
         <Outlet />
       </Main>
     </S.Wrapper>

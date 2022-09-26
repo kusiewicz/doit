@@ -43,9 +43,7 @@ export const Form = () => {
       <SocialButton
         Icon={Github}
         title="Continue with Github"
-        onClick={() => {
-          signInWithPopup(auth, githubProvider);
-        }}
+        onClick={() => signInWithPopup(auth, githubProvider)}
       />
       <S.Divider>
         <span>OR</span>

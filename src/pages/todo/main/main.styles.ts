@@ -8,17 +8,19 @@ const Menu = styled.div<{ shouldHide: boolean }>`
   min-height: calc(100% - 44px);
   transition: 0.5s;
 
+  @media (max-width: ${({ theme }) => theme.deviceBreakpoint.mobile}) {
+    position: absolute;
+    top: 44px;
+    width: 100%;
+  }
+
   ${({ shouldHide }) =>
     shouldHide
       ? css`
-          /* animation: hideMenu 0.5s; */
           transform: translate(-300px, 0);
           opacity: 0;
           width: 0;
           padding-left: 1px;
-          /* position: absolute;
-          top: 0;
-          left: 0; */
         `
       : css`
           transform: translate(0, 0);

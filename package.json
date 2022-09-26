@@ -15,7 +15,8 @@
     "antd": "^4.18.4",
     "craco-alias": "^3.0.1",
     "dayjs": "^1.10.7",
-    "firebase": "^9.6.7",
+    "firebase": "^9.10.0",
+    "firebase-tools": "^11.9.0",
     "formik": "^2.2.9",
     "luxon": "^2.3.0",
     "normalize.css": "^8.0.1",
@@ -32,7 +33,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "react-scripts build",
+    "build": "craco build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
