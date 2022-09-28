@@ -80,7 +80,7 @@ export const Editor = () => {
       <form onSubmit={handleSubmit}>
         <S.Textbox>
           <S.Title placeholder="e.g. Hold meeting at 11" {...getFieldProps('title')} />
-          <S.Description {...getFieldProps('description')} placeholder="Opis" />
+          <S.Description {...getFieldProps('description')} placeholder="Description" />
           <DatePicker
             date={dayjs(date)}
             onChange={(v: Dayjs) => {
