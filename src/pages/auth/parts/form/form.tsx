@@ -1,5 +1,5 @@
 import { Divider } from 'antd';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Link } from '../link/link';
 import { SocialButton } from '../social-button/social-button';
@@ -14,14 +14,38 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   GithubAuthProvider,
+  browserSessionPersistence,
+  setPersistence,
 } from 'firebase/auth';
+import { useMutation } from 'react-query';
 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
+export interface OutletContext {
+  setPage: Dispatch<SetStateAction<FormMode | undefined>>;
+  keepLogged: boolean;
+  setKeepLogged: Dispatch<SetStateAction<boolean>>;
+}
+
 export const Form = () => {
   const [page, setPage] = useState<FormMode | undefined>(undefined);
+  const [keepLogged, setKeepLogged] = useState<boolean>(true);
+
+  const signIn = async (
+    provider: FacebookAuthProvider | GithubAuthProvider | GoogleAuthProvider,
+  ) => {
+    return signInWithPopup(auth, provider);
+  };
+
+  const { mutate } = useMutation(signIn, {
+    onSuccess: () => {
+      if (!keepLogged) {
+        setPersistence(auth, browserSessionPersistence);
+      }
+    },
+  });
 
   return (
     <>
@@ -29,26 +53,22 @@ export const Form = () => {
       <SocialButton
         Icon={Google}
         title="Continue with Google"
-        onClick={() => {
-          signInWithPopup(auth, googleProvider);
-        }}
+        onClick={() => mutate(googleProvider)}
       />
       <SocialButton
         Icon={Facebook}
         title="Continue with Facebook"
-        onClick={() => {
-          signInWithPopup(auth, facebookProvider);
-        }}
+        onClick={() => mutate(facebookProvider)}
       />
       <SocialButton
         Icon={Github}
         title="Continue with Github"
-        onClick={() => signInWithPopup(auth, githubProvider)}
+        onClick={() => mutate(githubProvider)}
       />
       <S.Divider>
         <span>OR</span>
       </S.Divider>
-      <Outlet context={setPage} />
+      <Outlet context={{ setPage, keepLogged, setKeepLogged }} />
       <Divider />
       <S.Footer>
         <S.Text>

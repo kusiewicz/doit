@@ -7,18 +7,20 @@ import * as Yup from 'yup';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { LoadingPage } from '@pages/loading/loading-page';
 import { auth as initAuth, db } from '@lib/firebase/firebase';
-import { useRef, useState, Dispatch, SetStateAction, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { getReadableAuthError } from '@lib/firebase/get-readable-auth-error';
 import { FormMode } from '@pages/auth/auth-page';
 import { setDoc, doc } from 'firebase/firestore';
+import { OutletContext } from '../form';
 
 export const Register = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<AuthError | null>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const username = nameRef.current?.value;
-  const setPage: Dispatch<SetStateAction<FormMode | undefined>> = useOutletContext();
+
+  const { setPage } = useOutletContext<OutletContext>();
 
   useEffect(() => {
     setPage(FormMode.SIGNUP);

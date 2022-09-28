@@ -1,24 +1,31 @@
 import { Alert } from 'antd';
 import { useFormik } from 'formik';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormField } from '../../form-field/form-field';
 import { Link } from '../../link/link';
 import { Submit } from '../../submit-button/submit-button';
 import S from './login.styles';
 import { auth as initAuth } from '@lib/firebase/firebase';
-import { Auth, signInWithEmailAndPassword, AuthError } from 'firebase/auth';
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  AuthError,
+  browserSessionPersistence,
+  setPersistence,
+} from 'firebase/auth';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { LoadingPage } from '@pages/loading/loading-page';
 import * as Yup from 'yup';
 import { getReadableAuthError } from '@lib/firebase/get-readable-auth-error';
 import { FormMode } from '@pages/auth/auth-page';
+import { OutletContext } from '../form';
 
 export const Login = () => {
   const navigate = useNavigate();
-  const [keepLogged, setKeepLogged] = useState(false);
   const [error, setError] = useState<AuthError | null>(null);
-  const setPage: Dispatch<SetStateAction<FormMode | undefined>> = useOutletContext();
+
+  const { setPage, keepLogged, setKeepLogged } = useOutletContext<OutletContext>();
 
   useEffect(() => {
     setPage(FormMode.LOGIN);
@@ -39,7 +46,13 @@ export const Login = () => {
       .catch((err) => setError(err));
   };
 
-  const { mutate, isLoading } = useMutation(signIn);
+  const { mutate, isLoading } = useMutation(signIn, {
+    onSuccess: () => {
+      if (!keepLogged) {
+        setPersistence(initAuth, browserSessionPersistence);
+      }
+    },
+  });
 
   const { getFieldProps, values, errors, touched, handleSubmit } = useFormik({
     initialValues: {
